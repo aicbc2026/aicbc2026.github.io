@@ -1090,7 +1090,13 @@
     font-family:'Spline Sans Mono',monospace;font-size:.74rem;
     color:var(--muted);letter-spacing:.02em;line-height:1.5;
   }
-  .org-list li{padding:7px 0}
+  .org-list li{padding:4px 0;font-size:1rem}
+  .org-list li.org-inst{
+    font-family:'Spline Sans Mono',monospace;font-size:.68rem;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--muted);
+    padding:14px 0 5px;border-bottom:1px solid var(--line);margin-bottom:5px;
+  }
+  .org-list li.org-inst:first-child{padding-top:0}
 
   /* --- registration: banner, then fees, then the venue/travel grid --- */
   .reg-banner{
@@ -1227,9 +1233,9 @@
         <h2 class="htag orange">AICBC-2026</h2>
         <p class="lede">The <strong>49th All India Cell Biology Conference and Symposium</strong> is the annual meeting of the <strong>Indian Society of Cell Biology</strong>, co-hosted this year by <strong>IISER Pune</strong> and <strong>BRIC-NCCS Pune</strong>, 9&ndash;12 December 2026.</p>
         <p>With a theme centred on <em><strong>&ldquo;Architecture of Life&rdquo;</strong></em>, the conference explores how cellular life is organised across space and time &mdash; from molecules and biomolecular condensates to organelles, cells, tissues, and the dynamics of development and ageing. It asks a single question across every scale: what design principles keep a living system organised, robust, and alive?</p>
-        <p>The programme is organised around <strong>broad areas of cell biology</strong> &mdash; Organelles and Trafficking, Host&ndash;Pathogen Interaction, The Nucleus, The Cytoskeleton, and Lipids and Metabolites &mdash; together with named endowment lectures, special seminars, and short student talks. It opens with pre-conference workshops at both host institutes on 9 December and closes at BRIC-NCCS Pune on 12 December.</p>
+        <p>The programme is organised around <strong>broad areas of cell biology</strong> &mdash; Organelles and Trafficking, Host&ndash;Pathogen Interactions, The Nucleus, The Cytoskeleton, and Lipids and Metabolism &mdash; together with named endowment lectures, special seminars, and short student talks. It opens with pre-conference workshops at both host institutes on 9 December and closes at BRIC-NCCS Pune on 12 December.</p>
         <div class="pills">
-          <span>Organelles and Trafficking</span><span>Host&ndash;Pathogen Interaction</span><span>The Nucleus</span><span>The Cytoskeleton</span><span>Lipids and Metabolites</span><span>Poster Sessions</span><span>Pre-conference Workshops</span>
+          <span>Organelles and Trafficking</span><span>Host&ndash;Pathogen Interactions</span><span>The Nucleus</span><span>The Cytoskeleton</span><span>Lipids and Metabolism</span><span>Poster Sessions</span><span>Pre-conference Workshops</span>
         </div>
       </section>
 
@@ -1337,16 +1343,23 @@
         <div class="side-rule"></div>
         <div class="org-card">
           <ul class="org-list">
-            <!-- Names and titles checked against the institutional faculty pages
-                 rather than taken from the planning note, which had "Richa Rickey"
-                 for Richa Rikhy and gave Deepa Subramanyam without a surname.
-                 Asif Ali's faculty page could not be read to confirm a rank, so
-                 he is listed without one - add it once confirmed. -->
-            <li><a href="https://www.iiserpune.ac.in/research/department/biology/people/faculty/regular-faculty/girish-ratnaparkhi/325" target="_blank" rel="noopener noreferrer">Girish Ratnaparkhi</a><br><span class="org-aff">Department of Biology, IISER Pune</span></li>
-            <li><a href="https://www.iiserpune.ac.in/research/department/biology/people/faculty/regular-faculty/richa-rikhy/327" target="_blank" rel="noopener noreferrer">Richa Rikhy</a><br><span class="org-aff">Department of Biology, IISER Pune</span></li>
-            <li><a href="https://www.nccs.res.in/research-scientist/details/19" target="_blank" rel="noopener noreferrer">Deepa Subramanyam</a><br><span class="org-aff">Scientist E, BRIC-NCCS Pune</span></li>
-            <li><a href="mailto:aicbc2026@acads.iiserpune.ac.in">Asif Ali</a><br><span class="org-aff">Department of Biology, IISER Pune</span></li>
-            <li style="font-size:.86rem;color:#5a6970;margin-top:10px;font-family:'Spline Sans Mono',monospace">ISCB &middot; IISER Pune &middot; BRIC-NCCS Pune</li>
+            <!-- Grouped by institution rather than repeating an affiliation line
+                 under every name, which is how the committee supplied it and which
+                 also settles the designation question: no ranks are shown, so none
+                 can go out of date.
+                 Every profile URL below was opened and checked against the name
+                 printed on the page, EXCEPT asif-ali/608 - that one is from the
+                 institute's own search index and matches the pattern of the other
+                 four, but the page would not load here (TLS/robots error, twice).
+                 Worth one click before launch. -->
+            <li class="org-inst">Department of Biology, IISER Pune</li>
+            <li><a href="https://www.iiserpune.ac.in/research/department/biology/people/faculty/regular-faculty/girish-ratnaparkhi/325" target="_blank" rel="noopener noreferrer">Girish Ratnaparkhi</a></li>
+            <li><a href="https://www.iiserpune.ac.in/research/department/biology/people/faculty/regular-faculty/richa-rikhy/327" target="_blank" rel="noopener noreferrer">Richa Rikhy</a></li>
+            <li><a href="https://www.iiserpune.ac.in/research/department/biology/people/faculty/regular-faculty/asif-ali/608" target="_blank" rel="noopener noreferrer">Asif Ali</a></li>
+            <li><a href="https://www.iiserpune.ac.in/research/department/biology/people/faculty/regular-faculty/nagaraj-balasubramanian/9" target="_blank" rel="noopener noreferrer">Nagaraj Balasubramanian</a></li>
+            <li><a href="https://www.iiserpune.ac.in/research/department/biology/people/faculty/regular-faculty/mayurika-lahiri/289" target="_blank" rel="noopener noreferrer">Mayurika Lahiri</a></li>
+            <li class="org-inst">BRIC-NCCS Pune</li>
+            <li><a href="https://nccs.res.in/research-scientist/details/19" target="_blank" rel="noopener noreferrer">Deepa Subramanyam</a></li>
           </ul>
           <figure class="poster">
             <!-- The button generates an A3 PNG poster in the browser (see the
@@ -1531,17 +1544,55 @@
     <div class="rule"></div>
     <section id="speakers" class="block">
       <h2 class="htag orange">Invited Speakers</h2>
-      <p>National and international leaders in cell biology, biophysics and ageing. The line-up will be announced as speakers confirm.</p>
-      <!-- ORGANISERS: replace each <article class="spk"> placeholder below with a confirmed
-           speaker. To add a portrait, replace the initial inside <div class="ph"> with
-           <img src="photo.jpg" alt="Dr Name">. Cards reflow automatically; add or remove
-           as many as you like. -->
-      <!-- Six identical "to be announced" cards were shipping here. Restore the
-           grid when names land: each card is
-           <article class="spk"><div class="ph">A</div><div class="role">Invited
-           Speaker</div><div class="nm">Name</div><div class="aff">Affiliation</div>
-           <div class="talk">Talk title</div></article> inside <div class="speaker-grid">. -->
-      <p class="sched-note">Plenary, keynote, memorial and invited speakers are being confirmed now. Names and talk titles will appear here as they are finalised.</p>
+      <p>National and international leaders across all aspects of cell biology. Further names will be added as speakers confirm.</p>
+      <!-- Confirmed speakers, alphabetical. No role or talk-title line is shown:
+           those are not allocated yet, and a "to be announced" row on every card
+           is the placeholder noise this section already had once. To add a
+           portrait, replace the initial inside <div class="ph"> with
+           <img src="photo.jpg" alt="Name">. Cards reflow automatically. -->
+      <div class="speaker-grid">
+        <article class="spk">
+          <div class="ph" aria-hidden="true">A</div>
+          <div class="nm">Ajaz ul Hamid Wani</div>
+          <div class="aff">University of Kashmir</div>
+        </article>
+        <article class="spk">
+          <div class="ph" aria-hidden="true">M</div>
+          <div class="nm">Mainak Bose</div>
+          <div class="aff">IIT Kharagpur</div>
+        </article>
+        <article class="spk">
+          <div class="ph" aria-hidden="true">M</div>
+          <div class="nm">Minhaj Sirajuddin</div>
+          <div class="aff">NCBS Bangalore</div>
+        </article>
+        <article class="spk">
+          <div class="ph" aria-hidden="true">R</div>
+          <div class="nm">Richa Rikhy</div>
+          <div class="aff">IISER Pune</div>
+        </article>
+        <article class="spk">
+          <div class="ph" aria-hidden="true">S</div>
+          <div class="nm">Saleem Mohammed</div>
+          <div class="aff">NISER Bhubaneswar</div>
+        </article>
+        <article class="spk">
+          <div class="ph" aria-hidden="true">S</div>
+          <div class="nm">Satish Khurana</div>
+          <div class="aff">IISER Thiruvananthapuram</div>
+        </article>
+        <article class="spk">
+          <div class="ph" aria-hidden="true">S</div>
+          <div class="nm">Saurav Datta</div>
+          <div class="aff">IISER Bhopal</div>
+        </article>
+        <article class="spk">
+          <div class="ph" aria-hidden="true">V</div>
+          <div class="nm">Varadharajan Sundaramurthy</div>
+          <div class="aff">NCBS Bangalore</div>
+        </article>
+      </div>
+      <p class="sched-note">Talk titles and session allocations will be published with the programme.</p>
     </section>
 
     <div class="rule"></div>
@@ -1611,7 +1662,7 @@
           </div>
           <div class="slot alt">
             <div class="tm">16:00 &ndash; 18:30</div>
-            <div><div class="ttl">Session 2 &mdash; Host&ndash;Pathogen Interaction</div><div class="dsc">Three invited lectures, with tea between.</div></div>
+            <div><div class="ttl">Session 2 &mdash; Host&ndash;Pathogen Interactions</div><div class="dsc">Three invited lectures, with tea between.</div></div>
           </div>
           <div class="slot">
             <div class="tm">18:30 &ndash; 19:30</div>
@@ -1667,7 +1718,7 @@
           </div>
           <div class="slot alt">
             <div class="tm">09:30 &ndash; 10:30</div>
-            <div><div class="ttl">Session 5 &mdash; Lipids and Metabolites</div><div class="dsc">Two invited lectures, followed by tea.</div></div>
+            <div><div class="ttl">Session 5 &mdash; Lipids and Metabolism</div><div class="dsc">Two invited lectures, followed by tea.</div></div>
           </div>
           <div class="slot key">
             <div class="tm">11:00 &ndash; 12:00</div>
