@@ -7,7 +7,7 @@
   ==========================================================================
    BEFORE LAUNCH — replace every item below.  Search the file for "TODO:".
   ==========================================================================
-   1. SITE URL      DONE — set to https://aicbc2026.github.io/
+   1. SITE URL      DONE — set to https://aicbc2026.iiserpune.ac.in/
                     Requires the repo to be named exactly "aicbc2026.github.io"
                     under the GitHub account "aicbc2026". If you use any other
                     repo name the URL gains a /reponame/ segment and every
@@ -49,13 +49,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AICBC 2026 — Architecture of Life | 49th All India Cell Biology Conference, IISER Pune &amp; NCCS</title>
-<!-- Absolute URLs below assume the site is served from https://aicbc2026.github.io/ -->
+<!-- Absolute URLs below point at the INSTITUTIONAL domain, not the github.io
+     one. Once a custom domain is set in the repo, GitHub Pages 301-redirects
+     aicbc2026.github.io to it, so both addresses work and all search-engine
+     signals consolidate on one. Leaving canonical on github.io while serving
+     from iiserpune.ac.in would split them. -->
 <meta name="description" content="49th All India Cell Biology Conference & Symposium, co-hosted by IISER Pune and NCCS Pune, 9-12 December 2026. Theme: Architecture of Life - how cellular life is organised across space and time, from condensates and chromatin to ageing and morphogenesis.">
 <meta name="theme-color" content="#0f1d23">
 <!-- Build marker: lets you (and anyone helping) confirm at a glance which
      version is live. View source and search for "build". -->
 <meta name="build" content="v10-poster-updated">
-<link rel="canonical" href="https://aicbc2026.github.io/">
+<link rel="canonical" href="https://aicbc2026.iiserpune.ac.in/">
 
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
@@ -65,8 +69,8 @@
 <meta property="og:site_name" content="AICBC 2026 - IISER Pune &amp; BRIC-NCCS Pune">
 <meta property="og:title" content="AICBC 2026 - Architecture of Life | 49th All India Cell Biology Conference">
 <meta property="og:description" content="49th All India Cell Biology Conference & Symposium, co-hosted by IISER Pune and NCCS Pune, 9-12 December 2026. Theme: Architecture of Life - how cellular life is organised across space and time, from condensates and chromatin to ageing and morphogenesis.">
-<meta property="og:url" content="https://aicbc2026.github.io/">
-<meta property="og:image" content="https://aicbc2026.github.io/share-card.jpg">
+<meta property="og:url" content="https://aicbc2026.iiserpune.ac.in/">
+<meta property="og:image" content="https://aicbc2026.iiserpune.ac.in/share-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="AICBC 2026 - Architecture of Life, 9-12 December 2026, IISER Pune &amp; BRIC-NCCS Pune">
@@ -74,8 +78,89 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AICBC 2026 - Architecture of Life">
 <meta name="twitter:description" content="49th All India Cell Biology Conference & Symposium, co-hosted by IISER Pune and NCCS Pune, 9-12 December 2026. Theme: Architecture of Life - how cellular life is organised across space and time, from condensates and chromatin to ageing and morphogenesis.">
-<meta name="twitter:image" content="https://aicbc2026.github.io/share-card.jpg">
+<meta name="twitter:image" content="https://aicbc2026.iiserpune.ac.in/share-card.jpg">
 
+<!-- Event structured data. This is what lets Google understand the page as a
+     conference rather than prose: dates, venues, organisers, price range and
+     confirmed speakers, all machine-readable. Keep the dates and the price
+     range in step with the fee table if either changes. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "AICBC 2026 - 49th All India Cell Biology Conference and Symposium",
+  "alternateName": [
+    "AICBC 2026",
+    "49th AICBC",
+    "All India Cell Biology Conference 2026"
+  ],
+  "description": "The 49th All India Cell Biology Conference and Symposium, the annual meeting of the Indian Society of Cell Biology, co-hosted by IISER Pune and BRIC-NCCS Pune. Theme: Architecture of Life.",
+  "startDate": "2026-12-09",
+  "endDate": "2026-12-12",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "url": "https://aicbc2026.iiserpune.ac.in/",
+  "image": [
+    "https://aicbc2026.iiserpune.ac.in/share-card.jpg"
+  ],
+  "inLanguage": "en",
+  "isAccessibleForFree": false,
+  "keywords": "cell biology, AICBC, ISCB, conference, India, Pune, organelles, cytoskeleton, host-pathogen interactions, nucleus, lipids and metabolism",
+  "location": [
+    {
+      "@type": "Place",
+      "name": "IISER Pune",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Dr Homi Bhabha Road, Pashan",
+        "addressLocality": "Pune",
+        "postalCode": "411008",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      }
+    },
+    {
+      "@type": "Place",
+      "name": "BRIC-National Centre for Cell Science (BRIC-NCCS), Pune",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "SPPU Campus, Ganeshkhind",
+        "addressLocality": "Pune",
+        "postalCode": "411007",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      }
+    }
+  ],
+  "organizer": [
+    {
+      "@type": "Organization",
+      "name": "Indian Society of Cell Biology",
+      "url": "https://iscb.co.in"
+    },
+    {
+      "@type": "Organization",
+      "name": "IISER Pune",
+      "url": "https://www.iiserpune.ac.in"
+    },
+    {
+      "@type": "Organization",
+      "name": "BRIC-NCCS Pune",
+      "url": "https://www.nccs.res.in"
+    }
+  ],
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "INR",
+    "lowPrice": "4425",
+    "highPrice": "16520",
+    "offerCount": "10",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-08-20T00:00:00+05:30",
+    "url": "https://aicbc2026.iiserpune.ac.in/#registration"
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..600&family=Spline+Sans+Mono:wght@400..600&family=Archivo:wght@300..800&display=swap" rel="stylesheet">
@@ -1332,7 +1417,8 @@
           <div class="open">Early-bird registration opens 20 August</div>
           <div class="row"><span>Early-bird registration</span><b>Aug 20 &ndash; Sep 20</b></div>
           <div class="row"><span>Late registration</span><b>Sep 20 &ndash; Nov 20</b></div>
-          <div class="row"><span><a href="#registration">Abstract submission</a></span><b>Sep 20, 2026</b></div>
+          <div class="row"><span><a href="#registration">Abstracts &mdash; talk selection</a></span><b>Sep 20, 2026</b></div>
+          <div class="row"><span><a href="#registration">Abstracts &mdash; posters</a></span><b>Nov 20, 2026</b></div>
           <div class="row"><span>Workshops</span><b>Dec 9, 2026</b></div>
           <div class="row"><span>Conference</span><b>Dec 9&ndash;12, 2026</b></div>
         </div>
@@ -1525,7 +1611,10 @@
           <p>Platform speakers, poster timings, board numbers and a printable schedule will follow closer to the meeting.</p>
 
           <h3 class="sub-htag orange" style="margin-top:30px">Abstracts</h3>
-          <p>Abstracts close <strong>20 September 2026</strong>. Submission instructions will be published here; until then, write to <a href="mailto:aicbc2026@acads.iiserpune.ac.in">aicbc2026@acads.iiserpune.ac.in</a>. Abstracts close on the same day as early-bird registration, so register at the early-bird rate on or before 20 September if you intend to submit.</p>
+          <p>There are <strong>two deadlines</strong>, and only the first is a hard cut-off:</p>
+          <p><strong>20 September 2026 &mdash; to be considered for a short student talk.</strong> Talks are selected from the abstracts received by this date, so a late abstract cannot be considered for the podium. It falls on the same day early-bird registration closes.</p>
+          <p><strong>20 November 2026 &mdash; for a poster.</strong> Poster abstracts are accepted right up to the registration deadline.</p>
+          <p>Submission instructions will be published here; until then, write to <a href="mailto:aicbc2026@acads.iiserpune.ac.in">aicbc2026@acads.iiserpune.ac.in</a>.</p>
 
         </div>
       </div>
@@ -1534,7 +1623,7 @@
     <div class="rule"></div>
     <section id="awards" class="block">
       <h2 class="htag orange">Awards &amp; Endowment Prizes</h2>
-      <p>Students and young investigators presenting posters or platform talks are eligible for the Society&rsquo;s endowment awards &mdash; a certificate and a cash prize each. A limited number of travel grants may be available to student members.</p>
+      <p>Students and post-doctoral researchers presenting posters or platform talks are eligible for the Society&rsquo;s endowment awards &mdash; a certificate and a cash prize each. A limited number of travel grants may be available to student members.</p>
       <p style="font-size:.94rem;color:#4d5b63">Eligibility rules, prize values and the travel-grant application route will be published here. Enquiries: <a href="mailto:aicbc2026@acads.iiserpune.ac.in">aicbc2026@acads.iiserpune.ac.in</a>.</p>
       <div class="pills" style="margin-top:14px">
         <span>Dr C.M.S. Dass Prize</span><span>Dr S.R.V. Rao Prize</span><span>Dr V.C. Shah Prize</span><span>Dr A.S. Mukherjee Memorial Prize</span><span>Dr A.N. Bhisey Prize</span><span>Best Poster Awards</span><span>Travel Grants</span>
@@ -1544,55 +1633,15 @@
     <div class="rule"></div>
     <section id="speakers" class="block">
       <h2 class="htag orange">Invited Speakers</h2>
-      <p>National and international leaders across all aspects of cell biology. Further names will be added as speakers confirm.</p>
-      <!-- Confirmed speakers, alphabetical. No role or talk-title line is shown:
-           those are not allocated yet, and a "to be announced" row on every card
-           is the placeholder noise this section already had once. To add a
-           portrait, replace the initial inside <div class="ph"> with
-           <img src="photo.jpg" alt="Name">. Cards reflow automatically. -->
-      <div class="speaker-grid">
-        <article class="spk">
-          <div class="ph" aria-hidden="true">A</div>
-          <div class="nm">Ajaz ul Hamid Wani</div>
-          <div class="aff">University of Kashmir</div>
-        </article>
-        <article class="spk">
-          <div class="ph" aria-hidden="true">M</div>
-          <div class="nm">Mainak Bose</div>
-          <div class="aff">IIT Kharagpur</div>
-        </article>
-        <article class="spk">
-          <div class="ph" aria-hidden="true">M</div>
-          <div class="nm">Minhaj Sirajuddin</div>
-          <div class="aff">NCBS Bangalore</div>
-        </article>
-        <article class="spk">
-          <div class="ph" aria-hidden="true">R</div>
-          <div class="nm">Richa Rikhy</div>
-          <div class="aff">IISER Pune</div>
-        </article>
-        <article class="spk">
-          <div class="ph" aria-hidden="true">S</div>
-          <div class="nm">Saleem Mohammed</div>
-          <div class="aff">NISER Bhubaneswar</div>
-        </article>
-        <article class="spk">
-          <div class="ph" aria-hidden="true">S</div>
-          <div class="nm">Satish Khurana</div>
-          <div class="aff">IISER Thiruvananthapuram</div>
-        </article>
-        <article class="spk">
-          <div class="ph" aria-hidden="true">S</div>
-          <div class="nm">Saurav Datta</div>
-          <div class="aff">IISER Bhopal</div>
-        </article>
-        <article class="spk">
-          <div class="ph" aria-hidden="true">V</div>
-          <div class="nm">Varadharajan Sundaramurthy</div>
-          <div class="aff">NCBS Bangalore</div>
-        </article>
-      </div>
-      <p class="sched-note">Talk titles and session allocations will be published with the programme.</p>
+      <p>Leaders across all aspects of cell biology.</p>
+      <!-- Speaker cards withdrawn until the full list is confirmed - a partial
+           roster invites "why isn't X here?". The grid markup to restore:
+           <div class="speaker-grid"> then one
+           <article class="spk"><div class="ph" aria-hidden="true">A</div>
+           <div class="nm">Name</div><div class="aff">Affiliation</div></article>
+           per speaker. Names are also mirrored in the JSON-LD "performer" array
+           at the top of this file - add them back in both places together. -->
+      <p class="sched-note">The line-up is being finalised. Names, talk titles and session allocations will be published here together.</p>
     </section>
 
     <div class="rule"></div>
@@ -1624,11 +1673,11 @@
           </div>
           <div class="slot">
             <div class="tm">19:00 &ndash; 20:00</div>
-            <div><div class="ttl">ISCB Executive Committee Meeting</div><div class="dsc">Board Room, Main Building. Open to EC members only.</div></div>
+            <div><div class="ttl">ISCB Executive Committee Meeting</div><div class="dsc">Board Room, Guest House. Open to EC members only.</div></div>
           </div>
           <div class="slot">
             <div class="tm">20:00 &ndash; 22:00</div>
-            <div><div class="ttl">Dinner</div><div class="dsc">Dining Hall Complex.</div></div>
+            <div><div class="ttl">Dinner &middot; Registration Desk</div><div class="dsc">Dining Hall Complex. The desk is open through dinner for anyone arriving late.</div></div>
           </div>
         </div>
       </div>
@@ -1650,7 +1699,7 @@
           </div>
           <div class="slot key">
             <div class="tm">11:00 &ndash; 12:00</div>
-            <div><div class="ttl">Special Seminar</div><div class="dsc">Raman Hall.</div></div>
+            <div><div class="ttl">Prof Rita Mulherkar Award</div><div class="dsc">Award lecture, Raman Hall.</div></div>
           </div>
           <div class="slot">
             <div class="tm">12:00 &ndash; 13:00</div>
@@ -1697,10 +1746,6 @@
           <div class="slot alt">
             <div class="tm">16:00 &ndash; 17:30</div>
             <div><div class="ttl">Session 4 &mdash; The Cytoskeleton</div><div class="dsc">Three invited lectures, followed by tea.</div></div>
-          </div>
-          <div class="slot key">
-            <div class="tm">18:00 &ndash; 19:00</div>
-            <div><div class="ttl">Prof Rita Mulherkar Award</div><div class="dsc">Award lecture, Raman Hall.</div></div>
           </div>
           <div class="slot">
             <div class="tm">20:00 &ndash; 22:00</div>
