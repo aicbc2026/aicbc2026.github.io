@@ -591,38 +591,58 @@
   }
 
   /* --- speaker cards --- */
+  .spk-controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:16px 0 6px}
+  .spk-filter{
+    flex:1;min-width:200px;padding:10px 16px 10px 40px;border:1px solid var(--line);border-radius:10px;
+    font-family:'Archivo',sans-serif;font-size:.95rem;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%235f6c73' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='8' cy='8' r='5'/%3E%3Cline x1='12' y1='12' x2='16' y2='16'/%3E%3C/svg%3E") 12px center no-repeat;
+    transition:.2s;outline:none;
+  }
+  .spk-filter:focus{border-color:var(--cell);box-shadow:0 0 0 3px rgba(26,125,110,.12)}
+  .spk-count{font-size:.82rem;color:var(--muted);font-family:'Spline Sans Mono',monospace;white-space:nowrap}
   .speaker-grid{
     display:grid;grid-template-columns:repeat(3,1fr);
-    gap:18px;margin-top:20px;
+    gap:18px;margin-top:14px;
   }
   @media(max-width:920px){.speaker-grid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:520px){.speaker-grid{grid-template-columns:1fr}}
   .spk{
-    border:1px solid var(--line);border-radius:14px;background:#fff;padding:20px;
-    display:flex;flex-direction:column;gap:10px;transition:.25s;
+    border:1px solid var(--line);border-radius:14px;background:#fff;padding:22px;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    gap:8px;transition:all .3s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative;overflow:hidden;
   }
+  .spk::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,var(--cell),var(--nucleus),var(--cell));
+    background-size:200% 100%;opacity:0;transition:opacity .3s;
+  }
+  .spk:hover::before{opacity:1;animation:shimmer 2s linear infinite}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
   .spk:hover{
-    border-color:var(--line-strong);transform:translateY(-3px);
-    box-shadow:0 16px 34px -16px rgba(0,0,0,.28);
+    border-color:var(--line-strong);transform:translateY(-4px);
+    box-shadow:0 20px 40px -16px rgba(0,0,0,.18);
   }
   .spk .ph{
-    width:80px;height:80px;border-radius:50%;overflow:hidden;flex-shrink:0;
+    width:100px;height:100px;border-radius:50%;overflow:hidden;flex-shrink:0;
     background:linear-gradient(150deg,var(--cell) 0%,#0d3b34 100%);
     border:3px solid var(--soft);
     display:flex;align-items:center;justify-content:center;
-    font-family:'Fraunces',serif;font-size:1.5rem;color:rgba(255,255,255,.96);
+    font-family:'Fraunces',serif;font-size:1.8rem;color:rgba(255,255,255,.96);
+    transition:transform .3s,border-color .3s;
   }
+  .spk:hover .ph{transform:scale(1.08);border-color:var(--cell)}
   .spk .ph img{width:100%;height:100%;object-fit:cover;display:block}
   .spk .role{
     font-family:'Spline Sans Mono',monospace;font-size:.6rem;letter-spacing:.15em;
     text-transform:uppercase;color:var(--nucleus-text);
   }
   .spk .nm{font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;line-height:1.2}
-  .spk .aff{font-size:.86rem;color:#4d5b63;line-height:1.45}
+  .spk .aff{font-size:.84rem;color:#4d5b63;line-height:1.4}
+  .spk .aff .inst{font-weight:500;color:var(--cell-text)}
   .spk .talk{
     font-size:.83rem;font-style:italic;color:var(--muted);
-    border-top:1px dashed var(--line);padding-top:9px;margin-top:auto;
+    border-top:1px dashed var(--line);padding-top:9px;margin-top:auto;width:100%;
   }
+  .spk.hidden{display:none}
 
   /* --- program tabs --- */
   .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 20px}
@@ -1633,15 +1653,140 @@
     <div class="rule"></div>
     <section id="speakers" class="block">
       <h2 class="htag orange">Invited Speakers</h2>
-      <p>Leaders across all aspects of cell biology.</p>
-      <!-- Speaker cards withdrawn until the full list is confirmed - a partial
-           roster invites "why isn't X here?". The grid markup to restore:
-           <div class="speaker-grid"> then one
-           <article class="spk"><div class="ph" aria-hidden="true">A</div>
-           <div class="nm">Name</div><div class="aff">Affiliation</div></article>
-           per speaker. Names are also mirrored in the JSON-LD "performer" array
-           at the top of this file - add them back in both places together. -->
-      <p class="sched-note">The line-up is being finalised. Names, talk titles and session allocations will be published here together.</p>
+      <p>Leaders across the spectrum of cell biology &mdash; from chromatin and organelles to host&ndash;pathogen interactions and ageing.</p>
+      <div class="spk-controls">
+        <input type="text" class="spk-filter" placeholder="Search speakers or institutions…" aria-label="Filter speakers" id="spkSearch">
+        <span class="spk-count" id="spkCount">18 speakers</span>
+      </div>
+      <div class="speaker-grid" id="speakerGrid">
+
+        <article class="spk" data-name="ajazul h wani" data-inst="university of kashmir">
+          <div class="ph"><img src="https://scholar.google.com/citations?view_op=medium_photo&user=6TwxTasAAAAJ" alt="Ajazul H Wani"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Ajazul H Wani</div>
+          <div class="aff"><span class="inst">University of Kashmir</span></div>
+        </article>
+
+        <article class="spk" data-name="amitabha majumdar" data-inst="bric-nccs pune">
+          <div class="ph"><img src="https://www.nccs.res.in/uploads/scientists/165121296314Amitabhapic.jpg" alt="Amitabha Majumdar"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Amitabha Majumdar</div>
+          <div class="aff"><span class="inst">BRIC-NCCS</span>, Pune</div>
+        </article>
+
+        <article class="spk" data-name="bama charan mondol" data-inst="jnu new delhi">
+          <div class="ph"><img src="https://www.jnu.ac.in/sites/default/files/faculty_images/bamacharan.png" alt="Bama Charan Mondol"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Bama Charan Mondol</div>
+          <div class="aff"><span class="inst">JNU</span>, New Delhi</div>
+        </article>
+
+        <article class="spk" data-name="bidisha sinha" data-inst="iiser kolkata">
+          <div class="ph"><img src="https://www.iiserkol.ac.in/web/assets/images/facultyImage/1766465562_bidisha.sinha.png" alt="Bidisha Sinha"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Bidisha Sinha</div>
+          <div class="aff"><span class="inst">IISER Kolkata</span></div>
+        </article>
+
+        <article class="spk" data-name="chandrima das" data-inst="sinp kolkata">
+          <div class="ph"><img src="https://static.wixstatic.com/media/1aa9e6_57f2d160749d4ab0a9cf286cc81005b7~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Chandrima%20Das%20-%20Photograph.jpg" alt="Chandrima Das"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Chandrima Das</div>
+          <div class="aff"><span class="inst">SINP</span>, Kolkata</div>
+        </article>
+
+        <article class="spk" data-name="mainak bose" data-inst="iit kharagpur">
+          <div class="ph"><img src="https://static.wixstatic.com/media/a152a6_a2c6ce2786a749cea4ddb3d1b79c24be~mv2.jpeg/v1/fill/w_768,h_768,al_c,q_85/pic.001%20-%20mainak%20bose.jpeg" alt="Mainak Bose"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Mainak Bose</div>
+          <div class="aff"><span class="inst">IIT Kharagpur</span></div>
+        </article>
+
+        <article class="spk" data-name="minhaj sirajuddin" data-inst="instem bangalore">
+          <div class="ph"><img src="https://instem.res.in/wp-content/uploads/2025/02/minhaj.jpg" alt="Minhaj Sirajuddin"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Minhaj Sirajuddin</div>
+          <div class="aff"><span class="inst">InStem</span>, Bangalore</div>
+        </article>
+
+        <article class="spk" data-name="mohammed saleem" data-inst="niser bhubaneswar">
+          <div class="ph"><img src="https://static.wixstatic.com/media/442a64_335631d24bd442a69e21935ea479bafc~mv2.jpg/v1/crop/x_21,y_0,w_603,h_687/fill/w_200,h_228,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/saleem_edited_edited.jpg" alt="Mohammed Saleem"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Mohammed Saleem</div>
+          <div class="aff"><span class="inst">NISER</span>, Bhubaneswar</div>
+        </article>
+
+        <article class="spk" data-name="richa rikhy" data-inst="iiser pune">
+          <div class="ph"><img src="https://www.iiserpune.ac.in/storage/people/327/e7cdf306-d3d7-4572-a73c-4fc497d08f4d.jpg" alt="Richa Rikhy"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Richa Rikhy</div>
+          <div class="aff"><span class="inst">IISER Pune</span></div>
+        </article>
+
+        <article class="spk" data-name="saikat chowdhury" data-inst="ccmb hyderabad">
+          <div class="ph"><img src="https://i1.rgstatic.net/ii/profile.image/273783965614086-1442286592922_Q512/Saikat-Chowdhury-4.jpg" alt="Saikat Chowdhury"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Saikat Chowdhury</div>
+          <div class="aff"><span class="inst">CCMB</span>, Hyderabad</div>
+        </article>
+
+        <article class="spk" data-name="sandhya ganesan" data-inst="iiser thiruvananthapuram">
+          <div class="ph"><img src="https://www.iisertvm.ac.in/assets/uploads/faculties/Sandhya_Ganesan_headshot.jpeg" alt="Sandhya Ganesan"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Sandhya Ganesan</div>
+          <div class="aff"><span class="inst">IISER Thiruvananthapuram</span></div>
+        </article>
+
+        <article class="spk" data-name="satish khurana" data-inst="iiser thiruvananthapuram">
+          <div class="ph"><img src="https://www.iisertvm.ac.in/assets/uploads/faculties/SK_SoB_Square.jpg" alt="Satish Khurana"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Satish Khurana</div>
+          <div class="aff"><span class="inst">IISER Thiruvananthapuram</span></div>
+        </article>
+
+        <article class="spk" data-name="sheetal gandotra" data-inst="igib new delhi">
+          <div class="ph"><img src="https://lh3.googleusercontent.com/sitesv/AG8ngQVV7eYWTkpC9-DRIP8zQJy9yQrsC9nQJtbe0HHfj8w1VIPh4GpP0xkpf_ImaLjHC0Dfaapkfi5wUZEC-moqfl7WqctU7y36S1xmlb2g7agHVxm8hoPz-wXA0_kvSGmuY58pEPtrCW9byVF0VqWVgfDOxiqRMAIRmST5oLfPEoxsYBp842l_jvxdNjvjLD4OZstFPLZOevrZ2iA-=w1280" alt="Sheetal Gandotra"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Sheetal Gandotra</div>
+          <div class="aff"><span class="inst">IGIB</span>, New Delhi</div>
+        </article>
+
+        <article class="spk" data-name="shirisha nagotu" data-inst="iit guwahati">
+          <div class="ph"><img src="https://www.iitg.ac.in/biotech/faculty/d062a4694f3dc09d87df97a23d147e55.jpg" alt="Shirisha Nagotu"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Shirisha Nagotu</div>
+          <div class="aff"><span class="inst">IIT Guwahati</span></div>
+        </article>
+
+        <article class="spk" data-name="sona rajakumari" data-inst="iisc bangalore">
+          <div class="ph"><img src="https://dbg.iisc.ac.in/wp-content/uploads/2018/07/Sona-photo2.jpg" alt="Sona Rajakumari"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Sona Rajakumari</div>
+          <div class="aff"><span class="inst">IISc</span>, Bangalore</div>
+        </article>
+
+        <article class="spk" data-name="sourav datta" data-inst="iiser bhopal">
+          <div class="ph"><img src="https://i1.rgstatic.net/ii/profile.image/651547222487040-1532352371192_Q512/Sourav-Datta-6.jpg" alt="Sourav Datta"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Sourav Datta</div>
+          <div class="aff"><span class="inst">IISER Bhopal</span></div>
+        </article>
+
+        <article class="spk" data-name="sudha kumari" data-inst="iisc bangalore">
+          <div class="ph"><img src="https://mcb.iisc.ac.in/uploads/faculty/Recent_Kumari_HC_1751860077.jpg" alt="Sudha Kumari"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Sudha Kumari</div>
+          <div class="aff"><span class="inst">IISc</span>, Bangalore</div>
+        </article>
+
+        <article class="spk" data-name="varadharajan sundaramurthy" data-inst="ncbs bangalore">
+          <div class="ph"><img src="https://scholar.google.com/citations?view_op=medium_photo&user=3fbOmv8AAAAJ" alt="Varadharajan Sundaramurthy"></div>
+          <div class="role">Invited Speaker</div>
+          <div class="nm">Varadharajan Sundaramurthy</div>
+          <div class="aff"><span class="inst">NCBS</span>, Bangalore</div>
+        </article>
+
+      </div>
     </section>
 
     <div class="rule"></div>
@@ -2653,6 +2798,39 @@
           }
         });
       });
+    });
+  })();
+
+  /* --- speaker photo fallback --- */
+  (function(){
+    var imgs = document.querySelectorAll('.spk .ph img');
+    imgs.forEach(function(img){
+      img.addEventListener('error', function(){
+        var name = this.alt || 'S';
+        var parts = name.split(' ');
+        var initials = parts.length > 1 ? parts[0][0] + parts[parts.length-1][0] : parts[0][0];
+        this.style.display = 'none';
+        this.parentNode.textContent = initials.toUpperCase();
+      });
+    });
+  })();
+
+  /* --- speaker filter --- */
+  (function(){
+    var input = document.getElementById('spkSearch');
+    var grid  = document.getElementById('speakerGrid');
+    var count = document.getElementById('spkCount');
+    if(!input || !grid) return;
+    var cards = [].slice.call(grid.querySelectorAll('.spk'));
+    input.addEventListener('input', function(){
+      var q = this.value.toLowerCase().trim();
+      var visible = 0;
+      cards.forEach(function(c){
+        var match = !q || c.getAttribute('data-name').indexOf(q) !== -1 || c.getAttribute('data-inst').indexOf(q) !== -1;
+        c.classList.toggle('hidden', !match);
+        if(match) visible++;
+      });
+      count.textContent = visible + ' speaker' + (visible !== 1 ? 's' : '');
     });
   })();
 </script>
