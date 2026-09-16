@@ -58,7 +58,7 @@
 <meta name="theme-color" content="#0f1d23">
 <!-- Build marker: lets you (and anyone helping) confirm at a glance which
      version is live. View source and search for "build". -->
-<meta name="build" content="v16-regular-registration-window">
+<meta name="build" content="v19-contact-email-top-only">
 <link rel="canonical" href="https://aicbc2026.iiserpune.ac.in/">
 
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -570,6 +570,38 @@
   @media(prefers-reduced-motion:reduce){
     .reveal{opacity:1!important;transform:none!important;transition:none!important}
     html{scroll-behavior:auto}
+  }
+
+  /* --- contact strip: the conference address, above the fold ---
+     Sits directly under the countdown so a visitor meets it before any
+     section of the page. */
+  .mailbar{
+    background:var(--soft);
+    border-bottom:1px solid var(--line-strong);
+    padding:13px 34px;
+    display:flex;align-items:center;justify-content:center;
+    gap:10px 16px;flex-wrap:wrap;text-align:center;
+  }
+  .mailbar .mb-lead{
+    font-family:'Spline Sans Mono',monospace;font-size:.7rem;
+    letter-spacing:.16em;text-transform:uppercase;color:#5f6c73;
+  }
+  .mailbar a{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.12rem;
+    color:var(--nucleus-text);text-decoration:none;
+    padding:5px 16px;border-radius:999px;
+    border:1px solid var(--line-strong);background:#fff;
+    transition:.2s;word-break:break-all;
+  }
+  .mailbar a:hover{
+    text-decoration:none;border-color:var(--nucleus-text);
+    box-shadow:0 8px 20px -10px rgba(0,0,0,.35);transform:translateY(-1px);
+  }
+  .mailbar a svg{flex:none}
+  @media(max-width:600px){
+    .mailbar{padding:11px 16px;gap:6px}
+    .mailbar a{font-size:.94rem;padding:5px 12px}
   }
 
   /* --- countdown strip --- */
@@ -1334,6 +1366,12 @@
       <div class="cd-unit"><div class="n" id="cd-s">&mdash;</div><div class="l">Seconds</div></div>
     </div>
   </div>
+
+  <!-- ===== CONTACT STRIP ===== -->
+  <div class="mailbar">
+    <span class="mb-lead">Questions about the conference?</span>
+    <a href="mailto:aicbc2026@acads.iiserpune.ac.in"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg> aicbc2026@acads.iiserpune.ac.in</a>
+  </div>
 <nav>
     <div class="nav-inner">
       <a href="#overview" class="active">Overview</a>
@@ -1419,7 +1457,7 @@
         <h2 class="htag orange">Fee Structure</h2>
         <div class="side-rule"></div>
         <table class="fee">
-          <thead><tr><th>Category</th><th>Accommodation</th><th>Early bird<br><span class="fee-win">20 Aug &ndash; 20 Sep</span></th><th>Late<br><span class="fee-win">21 Sep &ndash; 20 Nov</span></th></tr></thead>
+          <thead><tr><th>Category</th><th>Accommodation</th><th>Early bird<br><span class="fee-win">20 Aug &ndash; 20 Sep</span></th><th>Regular<br><span class="fee-win">21 Sep &ndash; 20 Nov</span></th></tr></thead>
           <tbody>
             <tr class="fee-grp"><td rowspan="2"><strong>Student</strong></td><td class="acc">Hostel, shared</td><td><b>&#8377;5,900</b></td><td>&#8377;7,080</td></tr>
             <tr class="fee-sub"><td class="acc">None</td><td><b>&#8377;4,425</b></td><td>&#8377;5,310</td></tr>
