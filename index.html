@@ -58,7 +58,7 @@
 <meta name="theme-color" content="#0f1d23">
 <!-- Build marker: lets you (and anyone helping) confirm at a glance which
      version is live. View source and search for "build". -->
-<meta name="build" content="v19-contact-email-top-only">
+<meta name="build" content="v20-deadline-notice">
 <link rel="canonical" href="https://aicbc2026.iiserpune.ac.in/">
 
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -570,6 +570,41 @@
   @media(prefers-reduced-motion:reduce){
     .reveal{opacity:1!important;transform:none!important;transition:none!important}
     html{scroll-behavior:auto}
+  }
+
+  /* --- announcement bar: deadline changes and other notices ---
+     Sits directly above the contact strip so it is the first thing after
+     the countdown. To retire a notice, delete the .notice block in the
+     markup; to add another, copy it. Nothing else depends on it. */
+  .notice{
+    background:var(--nucleus-soft);
+    border-top:1px solid rgba(176,67,0,.22);
+    border-bottom:1px solid rgba(176,67,0,.22);
+    padding:15px 34px;
+    display:flex;align-items:flex-start;justify-content:center;
+    gap:14px;flex-wrap:nowrap;
+  }
+  .notice .nt-ico{
+    flex:none;display:grid;place-items:center;
+    width:28px;height:28px;border-radius:50%;
+    background:#fff;border:1px solid rgba(176,67,0,.3);
+    color:var(--nucleus-text);margin-top:1px;
+  }
+  .notice .nt-body{max-width:900px}
+  .notice .nt-tag{
+    display:block;
+    font-family:'Spline Sans Mono',monospace;font-size:.66rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--nucleus-text);
+    margin-bottom:4px;
+  }
+  .notice p{
+    margin:0;font-size:.98rem;line-height:1.5;color:var(--ink);
+  }
+  .notice p strong{color:var(--nucleus-text)}
+  @media(max-width:600px){
+    .notice{padding:13px 16px;gap:10px}
+    .notice p{font-size:.9rem}
+    .notice .nt-ico{width:24px;height:24px}
   }
 
   /* --- contact strip: the conference address, above the fold ---
@@ -1364,6 +1399,15 @@
       <div class="cd-unit"><div class="n" id="cd-h">&mdash;</div><div class="l">Hours</div></div>
       <div class="cd-unit"><div class="n" id="cd-m">&mdash;</div><div class="l">Minutes</div></div>
       <div class="cd-unit"><div class="n" id="cd-s">&mdash;</div><div class="l">Seconds</div></div>
+    </div>
+  </div>
+
+  <!-- ===== ANNOUNCEMENT ===== -->
+  <div class="notice" role="note">
+    <span class="nt-ico" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 12V7.6M12 15.8h.01"/></svg></span>
+    <div class="nt-body">
+      <span class="nt-tag">Deadline extended</span>
+      <p>The deadline for submission of <strong>Student/Post-Doc abstracts for platform presentations</strong> has been extended to <strong>September 30, 2026</strong>. Please, however, note that the <strong>early-bird fee deadline remains as is: September 20, 2026</strong>.</p>
     </div>
   </div>
 
