@@ -1344,6 +1344,253 @@
     .col-side #fees .fee td.acc{font-size:.75rem}
   }
 
+
+  /* ===== PRE-CONFERENCE WORKSHOP =================================
+     Shares the section furniture (.block, .htag, .sched/.slot, .pills,
+     .btn) with the rest of the page; only the pieces with no existing
+     equivalent are defined here.                                     */
+  .ws-eyebrow{
+    font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--cell-text);margin-bottom:10px;
+  }
+  .ws-title{
+    font-size:1.95rem;line-height:1.08;margin-bottom:16px;max-width:22ch;
+  }
+  .ws-title em{display:block;color:var(--nucleus-text);font-style:italic;font-size:.82em;margin-top:4px;font-weight:600}
+
+  .ws-apply{
+    display:grid;grid-template-columns:1.35fr 1fr;gap:38px;align-items:center;
+    background:linear-gradient(150deg,#16242b 0%,#0d3b34 100%);
+    color:#fff;border-radius:16px;padding:30px 34px;margin:26px 0 34px;
+    position:relative;overflow:hidden;
+  }
+  .ws-apply::after{
+    content:"";position:absolute;right:-70px;bottom:-90px;width:260px;height:260px;
+    border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle,rgba(26,125,110,.45) 0%,transparent 70%);
+  }
+  .ws-apply > *{position:relative;z-index:1}
+  .ws-apply h3{font-size:1.5rem;line-height:1.1;margin-bottom:10px;color:#fff}
+  .ws-apply p{font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.82);max-width:54ch;margin-bottom:18px}
+  .ws-cta-note{font-size:.72rem !important;letter-spacing:.02em;color:rgba(255,255,255,.55) !important;margin:14px 0 0 !important;max-width:46ch}
+  .ws-cta.is-pending{
+    background:rgba(255,255,255,.13);color:rgba(255,255,255,.72);
+    box-shadow:none;cursor:default;border:1px dashed rgba(255,255,255,.35);
+  }
+  .ws-cta.is-pending:hover{text-decoration:none}
+  .ws-tail .ws-cta.is-pending{
+    background:var(--soft);color:var(--muted);border:1px dashed var(--line-strong);
+  }
+
+  .wa-facts{display:grid;gap:1px;background:rgba(255,255,255,.14);border-radius:12px;overflow:hidden}
+  .wf{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    background:rgba(9,32,28,.55);padding:10px 15px;
+  }
+  .wf span{
+    font-family:'Spline Sans Mono',monospace;font-size:.68rem;letter-spacing:.1em;
+    text-transform:uppercase;color:rgba(255,255,255,.58);
+  }
+  .wf b{font-size:.92rem;text-align:right;color:#fff}
+  /* provisional values: a dotted rule plus a degree mark, keyed in .ws-foot */
+  .prov{border-bottom:1px dotted rgba(255,255,255,.55)}
+  .prov::after{content:"\00b0";color:#ffb074;font-weight:700}
+  .prov-key{color:var(--nucleus-text);font-weight:700}
+
+
+  .ws-fig{margin:26px 0 30px}
+  .wf-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .wf-one img{
+    display:block;width:100%;height:auto;border-radius:8px;
+    border:1px solid var(--line-strong);background:#0b1f1c;
+  }
+  .wf-one.hi img{border-color:var(--nucleus)}
+  .wf-one figcaption{
+    display:flex;justify-content:space-between;align-items:baseline;gap:8px;
+    font-family:'Spline Sans Mono',monospace;font-size:.72rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);margin-top:7px;
+  }
+  .wf-one.hi figcaption{color:var(--nucleus-text)}
+  .wf-one figcaption span{font-size:.66rem;opacity:.7}
+  .wf-cap{font-size:.88rem;line-height:1.5;color:#4d5b63;margin-top:14px;max-width:80ch}
+  .wf-sim{
+    font-family:'Spline Sans Mono',monospace;font-size:.72rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);white-space:nowrap;
+  }
+  @media(max-width:700px){
+    .wf-row{grid-template-columns:1fr;gap:16px}
+  }
+
+  .ws-vs{border-top:2px solid var(--ink);margin:16px 0 0}
+  .vsr{
+    display:grid;grid-template-columns:150px 1fr 1fr;gap:16px;align-items:baseline;
+    padding:10px 0;border-bottom:1px solid var(--line);
+  }
+  .vsr span{
+    font-family:'Spline Sans Mono',monospace;font-size:.72rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .vsr i{font-style:normal;font-size:.93rem;line-height:1.45;color:#2b3a42}
+  .vsh b{
+    font-family:'Spline Sans Mono',monospace;font-size:.76rem;letter-spacing:.12em;
+    text-transform:uppercase;font-weight:600;
+  }
+  .vsh b.a{color:var(--cell-text)}
+  .vsh b.b{color:var(--nucleus-text)}
+  .ws-vs-note{font-size:.93rem;line-height:1.6;color:#4d5b63;margin-top:14px;max-width:78ch}
+  @media(max-width:700px){
+    .vsr{grid-template-columns:1fr;gap:4px;padding:12px 0}
+    .vsr i{padding-left:14px;border-left:2px solid var(--line-strong)}
+    .vsh{display:none}
+    .vsr i:nth-of-type(1)::before{content:"Lattice SIM \2014 ";font-family:'Spline Sans Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cell-text)}
+    .vsr i:nth-of-type(2)::before{content:"STED \2014 ";font-family:'Spline Sans Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--nucleus-text)}
+  }
+
+  .ws-bleach{margin:26px 0 30px}
+  .bl-row{display:grid;grid-template-columns:118px 1fr;gap:14px;align-items:center;margin-bottom:8px}
+  .bl-lab{
+    font-family:'Spline Sans Mono',monospace;font-size:.74rem;letter-spacing:.1em;
+    text-transform:uppercase;text-align:right;line-height:1.5;
+  }
+  .bl-lab span{display:block;font-size:.66rem;color:var(--muted);letter-spacing:.06em}
+  .bl-lab.a{color:var(--cell-text)}
+  .bl-lab.b{color:var(--nucleus-text)}
+  .bl-row img{display:block;width:100%;height:auto;border-radius:6px}
+  .bl-x{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:7px;
+    margin:6px 0 0 132px;
+    font-family:'Spline Sans Mono',monospace;font-size:.68rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);text-align:center;
+  }
+  .bl-curve{margin:18px 0 0 132px}
+  .bl-curve img{display:block;width:100%;height:auto;border-radius:6px}
+  .bl-key{
+    display:flex;flex-wrap:wrap;gap:16px;align-items:baseline;margin-top:8px;
+    font-family:'Spline Sans Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+  }
+  .bl-key .a{color:var(--cell-text)}
+  .bl-key .b{color:var(--nucleus-text)}
+  .bl-key .a::before,.bl-key .b::before{
+    content:"";display:inline-block;width:16px;height:3px;border-radius:2px;
+    margin-right:7px;vertical-align:middle;background:currentColor;
+  }
+  .bl-key em{font-style:normal;color:var(--muted);text-transform:none;letter-spacing:.02em}
+  .ws-bleach figcaption{font-size:.9rem;line-height:1.55;color:#4d5b63;margin-top:16px;max-width:80ch}
+  @media(max-width:700px){
+    .bl-row{grid-template-columns:1fr;gap:5px}
+    .bl-lab{text-align:left}
+    .bl-x,.bl-curve{margin-left:0}
+  }
+
+  /* ===== Lattice SIM vs STED, side by side - mirrors the poster's band ===== */
+  .vsweb{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:18px 0 0;align-items:start}
+  .vsw-lab{
+    font-family:'Spline Sans Mono',monospace;font-size:.74rem;letter-spacing:.12em;
+    text-transform:uppercase;font-weight:600;margin-bottom:12px;
+    padding-bottom:7px;border-bottom:1px solid var(--line-strong);
+  }
+  .vsw-lab.a{color:var(--cell-text)}
+  .vsw-lab.b{color:var(--nucleus-text)}
+
+  .vsw-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .vsw-trio img{display:block;width:100%;height:auto;border-radius:6px;border:1px solid var(--line-strong)}
+  .vsw-trio .hi img{border-color:var(--nucleus)}
+  .vsw-trio span{
+    display:block;margin-top:7px;text-align:center;
+    font-family:'Spline Sans Mono',monospace;font-size:.68rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);line-height:1.6;
+  }
+  .vsw-trio span i{display:block;font-style:normal;font-size:.62rem;opacity:.75}
+  .vsw-trio .hi span{color:var(--nucleus-text)}
+
+  .vsw-bleach .blr{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:center;margin-bottom:7px}
+  .vsw-bleach .blr span{
+    font-family:'Spline Sans Mono',monospace;font-size:.66rem;letter-spacing:.08em;
+    text-transform:uppercase;text-align:right;line-height:1.4;
+  }
+  .vsw-bleach .blr span.a{color:var(--cell-text)}
+  .vsw-bleach .blr span.b{color:var(--nucleus-text)}
+  .vsw-bleach img{display:block;width:100%;height:auto;border-radius:5px}
+  .vsw-bleach .blx{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:4px 0 0 86px;
+    font-family:'Spline Sans Mono',monospace;font-size:.64rem;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--muted);text-align:center;
+  }
+  .vsw-bleach .blx i{font-style:normal}
+  .vsw-curve{display:block;width:calc(100% - 86px);height:auto;margin:14px 0 0 86px;border-radius:5px}
+  .vsw-key{
+    display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;margin:8px 0 0 86px;
+    font-family:'Spline Sans Mono',monospace;font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;
+  }
+  .vsw-key .a{color:var(--cell-text)}
+  .vsw-key .b{color:var(--nucleus-text)}
+  .vsw-key .a::before,.vsw-key .b::before{
+    content:"";display:inline-block;width:14px;height:3px;border-radius:2px;
+    margin-right:6px;vertical-align:middle;background:currentColor;
+  }
+  .vsw-key em{font-style:normal;color:var(--muted);text-transform:none;letter-spacing:.02em}
+
+  .vsw-cap{font-size:.85rem;line-height:1.5;color:#4d5b63;margin-top:12px}
+  .vsw-verdict{
+    font-size:.98rem;line-height:1.6;color:#33434b;margin-top:20px;
+    padding-top:14px;border-top:1px solid var(--line-strong);max-width:88ch;
+  }
+  .vsw-verdict strong{color:var(--ink)}
+  @media(max-width:880px){
+    .vsweb{grid-template-columns:1fr;gap:30px}
+  }
+  @media(max-width:700px){
+    .vsw-bleach .blr{grid-template-columns:1fr;gap:3px}
+    .vsw-bleach .blr span{text-align:left}
+    .vsw-bleach .blx,.vsw-curve,.vsw-key{margin-left:0}
+    .vsw-curve{width:100%}
+  }
+  .ws-elig{
+    border:1px solid var(--line-strong);border-left:5px solid var(--nucleus);
+    background:var(--nucleus-soft);border-radius:12px;padding:22px 24px;margin-bottom:34px;
+  }
+  .we-flag{
+    font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--nucleus-text);font-weight:600;margin-bottom:10px;
+  }
+  .ws-elig p{font-size:.95rem;line-height:1.55;margin-bottom:10px}
+  .ws-elig p:last-child{margin-bottom:0}
+  .we-warn{font-weight:600;color:#8c3400}
+
+  .ws-two{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-bottom:10px}
+  .ws-pull{
+    font-family:'Fraunces',serif;font-size:1.12rem;line-height:1.3;
+    color:var(--cell-text);border-left:3px solid var(--cell);
+    padding-left:14px;margin-top:14px;
+  }
+
+  .ws-day{
+    font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+    color:var(--ink);background:var(--soft);border-radius:8px;
+    padding:11px 15px;margin:26px 0 12px;border-left:4px solid var(--cell);
+  }
+  .ws-day em{text-transform:none;letter-spacing:0;color:var(--muted);font-weight:400}
+  .ws-sched-note{font-size:.85rem;color:var(--muted);margin-bottom:12px}
+  .ws-foot{font-size:.82rem;color:var(--muted);margin-top:18px}
+
+  .ws-tail{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:26px}
+  .ws-poster{
+    display:inline-flex;align-items:center;gap:9px;
+    border:1px solid var(--line-strong);background:var(--soft);
+    border-radius:40px;padding:11px 20px;font-size:.9rem;font-weight:600;
+    color:var(--ink);transition:.2s;
+  }
+  .ws-poster:hover{text-decoration:none;border-color:var(--cell);color:var(--cell-text);background:var(--cell-soft)}
+  .ws-poster .mono{font-size:.72rem;color:var(--muted);font-weight:400}
+  .ws-contact{font-size:.9rem;color:var(--muted);margin-top:18px}
+
+  @media(max-width:880px){
+    .ws-apply{grid-template-columns:1fr;gap:24px;padding:26px 22px}
+    .ws-two{grid-template-columns:1fr;gap:22px}
+    .ws-title{font-size:1.55rem}
+    .ws-apply h3{font-size:1.28rem}
+  }
+
 </style>
 </head>
 <body>
@@ -1420,6 +1667,7 @@
     <div class="nav-inner">
       <a href="#overview" class="active">Overview</a>
       <a href="#registration">Registration</a>
+      <a href="#workshop">Workshop</a>
       <a href="#awards">Awards</a>
       <a href="#speakers">Speakers</a>
       <a href="#program">Programme</a>
@@ -1538,7 +1786,9 @@
           <div class="row"><span>Regular registration</span><b>Sep 21 &ndash; Nov 20</b></div>
           <div class="row"><span><a href="#registration">Abstracts &mdash; talk selection</a></span><b>Sep 30, 2026</b></div>
           <div class="row"><span><a href="#registration">Abstracts &mdash; posters</a></span><b>Nov 20, 2026</b></div>
-          <div class="row"><span>Workshops</span><b>Dec 9, 2026</b></div>
+          <div class="row"><span><a href="#workshop">Workshop applications close</a></span><b>Oct 31, 2026<span class="prov-key">&deg;</span></b></div>
+          <div class="row"><span><a href="#workshop">Superresolution workshop</a></span><b>Dec 7&ndash;9, 2026</b></div>
+          <div class="row"><span>Other pre-conference workshops</span><b>Dec 9, 2026</b></div>
           <div class="row"><span>Conference</span><b>Dec 9&ndash;12, 2026</b></div>
         </div>
       </section>
@@ -1665,7 +1915,7 @@
           <h3 class="sub-htag orange">Conference Venues</h3>
           <p>The meeting runs across <strong>two campuses</strong>. The first three days are held at <strong>IISER Pune</strong>, with all talks in <strong>Raman Hall, Lecture Hall Complex</strong>, and poster sessions and meals in the <strong>Dining Hall Complex</strong>. The final day (12 December) moves to <strong>NCCS Pune</strong> for Sessions 5 and 6, the endowment lecture and the award ceremony.</p>
           <p><a href="https://maps.google.com/?q=IISER+Pune" target="_blank" rel="noopener noreferrer">IISER Pune on Google Maps &rarr;</a> &nbsp;&middot;&nbsp; <a href="https://maps.google.com/?q=National+Centre+for+Cell+Science+Pune" target="_blank" rel="noopener noreferrer">NCCS Pune on Google Maps &rarr;</a></p>
-          <p><strong>Pre-conference workshops</strong> run on 9 December at both IISER Pune and NCCS Pune. Places are limited and require separate sign-up during registration.</p>
+          <p><strong>Pre-conference workshops</strong> run at both IISER Pune and NCCS Pune. The <a href="#workshop">Superresolution Microscopy workshop</a> runs 7&ndash;9 December and is applied for separately; other workshops run on 9 December. Places are limited.</p>
 
           <h3 class="sub-htag orange">Accommodation</h3>
           <p><strong>Campus accommodation is optional.</strong> If you take it, it is bundled into your fee and allocated on the <strong>IISER Pune campus</strong> &mdash; students in shared hostel rooms, post-docs in shared guest-house rooms, faculty, industry and international delegates in single rooms. No separate booking is needed.</p>
@@ -1762,6 +2012,245 @@
 
         </div>
       </div>
+    </section>
+
+    <div class="rule"></div>
+    <!-- ==================================================================
+         PRE-CONFERENCE WORKSHOP - Superresolution Microscopy
+         Added Sep 2026 at the request of the workshop convenor.
+         Source: the convenor's schedule document of Sep 2026.
+
+         TODO(WS): items carrying the class "prov" are PROVISIONAL defaults
+         proposed by the site, not confirmed by the organisers. Confirm or
+         correct each one, then delete the class so the dotted marker and the
+         footnote disappear:
+           - number of places (24, i.e. two hands-on batches of twelve)
+           - workshop fee (student/post-doc and general rates)
+           - application deadline (31 Oct 2026) and decision date (15 Nov 2026)
+         TODO(WS-FORM): paste the Google Form link into WORKSHOP_FORM_URL in
+         the small script at the end of this section. Until it is filled in,
+         both Apply buttons read "Applications opening shortly" and are inert,
+         so the page never carries a dead link.
+         ================================================================== -->
+    <section id="workshop" class="block">
+      <h2 class="htag orange">Pre-Conference Workshop</h2>
+
+      <div class="ws-eyebrow mono">7&ndash;9 December 2026 &middot; IISER Pune &amp; BRIC-NCCS Pune &middot; Indian Society of Cell Biology</div>
+      <h3 class="ws-title">Superresolution Microscopy<em>From Principles to Practice</em></h3>
+      <p class="lede">An intensive, advanced-level programme for researchers, imaging scientists and facility professionals who already work with microscopy. It takes imaging past the confocal &mdash; through the principles, experimental design, acquisition, optimisation, validation and quantitative analysis of superresolution, with extended hands-on time on <strong>STED</strong> and <strong>Lattice SIM</strong>.</p>
+      <p>The workshop is deliberately small and highly interactive: participants work in two batches that rotate between the STED system at the <strong>BRIC-NCCS Imaging Facility</strong> and the Lattice SIM system at <strong>IISER Pune</strong>, with expert discussion, practical problem-solving and the possibility of imaging their own prepared samples. <strong>Full-time participation throughout the workshop is mandatory.</strong></p>
+
+
+      <!-- Resolution figure. Simulated, and labelled as such: ground truth drawn
+           at 10 nm/px, convolved with a Gaussian PSF at each modality's FWHM,
+           then given shot noise. Replace with real data from the facilities when
+           there is some to show. -->
+      <!-- The resolution figure alone reads as a ladder with STED on top. It is a
+           trade-off, and which method a question needs is the actual teaching
+           content of the workshop - hence this table. -->
+
+      <!-- The argument, in the same order as the poster: what each instrument is
+           good at, side by side, before any table. -->
+      <h3 class="sub-htag orange" style="margin-top:30px">Lattice SIM <em>vs</em> STED</h3>
+      <p>Both systems break the diffraction limit, and they break it differently. Choosing well is most of the skill &mdash; which is why every participant works on both.</p>
+
+      <div class="vsweb">
+        <figure class="vsw">
+          <figcaption class="vsw-lab b">Where STED wins &mdash; resolving power</figcaption>
+          <div class="vsw-trio">
+            <div>
+              <img src="img/ws-spot-confocal.webp" width="520" height="735" loading="lazy" decoding="async"
+                   alt="Two point sources at confocal resolution: a single merged blur, and a profile with one broad peak">
+              <span>Confocal<i>~230 nm</i></span>
+            </div>
+            <div class="hi">
+              <img src="img/ws-spot-sim.webp" width="520" height="735" loading="lazy" decoding="async"
+                   alt="The same two sources at Lattice SIM resolution: the blur splits and the profile shows a dip between two peaks">
+              <span>Lattice SIM<i>~115 nm</i></span>
+            </div>
+            <div class="hi">
+              <img src="img/ws-spot-sted.webp" width="520" height="735" loading="lazy" decoding="async"
+                   alt="The same two sources at STED resolution: two clean spots and two fully separated peaks">
+              <span>STED<i>~50 nm</i></span>
+            </div>
+          </div>
+          <p class="vsw-cap">Two point sources 120&nbsp;nm apart, with the intensity profile measured along the dashed line. That dip between the peaks is the resolution criterion itself. Scale bar 200&nbsp;nm. <span class="wf-sim">Simulation.</span></p>
+        </figure>
+
+        <figure class="vsw">
+          <figcaption class="vsw-lab a">Where SIM wins &mdash; photon budget</figcaption>
+          <div class="vsw-bleach">
+            <div class="blr"><span class="a">Lattice SIM</span>
+              <img src="img/ws-bleach-sim.webp" width="1000" height="197" loading="lazy" decoding="async"
+                   alt="A Lattice SIM time-lapse: the filaments dim gradually and are still clearly imaged at frame 40"></div>
+            <div class="blr"><span class="b">STED</span>
+              <img src="img/ws-bleach-sted.webp" width="1000" height="197" loading="lazy" decoding="async"
+                   alt="The same structure under STED: sharper at frame 1, faint by frame 20 and gone by frame 40"></div>
+            <div class="blx"><i>Frame 1</i><i>5</i><i>10</i><i>20</i><i>40</i></div>
+          </div>
+          <img class="vsw-curve" src="img/ws-bleach-curve.webp" width="1400" height="300" loading="lazy" decoding="async"
+               alt="Signal remaining against frame number: the Lattice SIM curve decays slowly, the STED curve falls steeply">
+          <div class="vsw-key"><span class="a">Lattice SIM</span><span class="b">STED</span><em>signal remaining &middot; dashed line = 50%</em></div>
+          <p class="vsw-cap">The same structure over a time-lapse, at identical display scaling on every frame &mdash; so the dimming and the rising noise are real, not a contrast trick. <span class="wf-sim">Simulation.</span></p>
+        </figure>
+      </div>
+
+      <p class="vsw-verdict"><strong>SIM buys a factor of two almost for free; STED buys four or five and pays for it in photons.</strong> STED is visibly the sharper at frame&nbsp;1 &mdash; but by frame&nbsp;20 there is little left to image. A live, multicolour, whole-cell experiment usually wants SIM; a fixed sample where two structures sit 60&nbsp;nm apart wants STED. Neither is the better instrument.</p>
+
+      <h3 class="sub-htag orange" style="margin-top:30px">The trade-off in full</h3>
+      <div class="ws-vs">
+        <div class="vsr vsh"><span></span><b class="a">Lattice SIM</b><b class="b">STED</b></div>
+        <div class="vsr"><span>Lateral resolution</span><i>~2&times; confocal &mdash; 110&ndash;120 nm</i><i>~4&ndash;5&times; &mdash; 30&ndash;70 nm</i></div>
+        <div class="vsr"><span>Axial resolution</span><i>improved too, in 3D mode</i><i>needs 3D-STED, at a cost in light</i></div>
+        <div class="vsr"><span>Light dose</span><i>low</i><i>high &mdash; an intense depletion beam</i></div>
+        <div class="vsr"><span>Live cells</span><i>routine; time-lapse is practical</i><i>demanding; photobleaching limits you</i></div>
+        <div class="vsr"><span>Fluorophores</span><i>conventional dyes and fluorescent proteins</i><i>photostable dyes matched to the depletion line</i></div>
+        <div class="vsr"><span>Field &amp; speed</span><i>whole field at once, camera-based</i><i>point-scanned, slower over large areas</i></div>
+        <div class="vsr"><span>Main failure mode</span><i>reconstruction artefacts from poor raw data</i><i>bleaching and low signal</i></div>
+      </div>
+      <p class="ws-vs-note">SIM buys a factor of two almost for free; STED buys four or five and pays for it in photons. Neither is the &ldquo;better&rdquo; instrument &mdash; a live, multicolour, whole-cell experiment usually wants SIM, while a fixed sample where two structures sit 60&nbsp;nm apart wants STED. Every participant works on both systems, and a good part of the discussion is about which to reach for.</p>
+
+      <h3 class="sub-htag orange" style="margin-top:30px">What that looks like in a cell</h3>
+      <figure class="ws-fig">
+        <div class="wf-row">
+          <div class="wf-one">
+            <img src="img/ws-confocal.webp" width="780" height="576" loading="lazy" decoding="async"
+                 alt="Simulated microtubule field at confocal resolution: filaments merge into one another and the magnified inset is an unresolved blur">
+            <figcaption>Confocal <span>~230 nm</span></figcaption>
+          </div>
+          <div class="wf-one hi">
+            <img src="img/ws-sim.webp" width="780" height="576" loading="lazy" decoding="async"
+                 alt="The same field at Lattice SIM resolution: individual filaments begin to separate">
+            <figcaption>Lattice SIM <span>~115 nm</span></figcaption>
+          </div>
+          <div class="wf-one hi">
+            <img src="img/ws-sted.webp" width="780" height="576" loading="lazy" decoding="async"
+                 alt="The same field at STED resolution: individual filaments are clearly separated and the inset resolves a crossing">
+            <figcaption>STED <span>~50 nm</span></figcaption>
+          </div>
+        </div>
+        <figcaption class="wf-cap">The same microtubule field, imaged three ways. Where the confocal sees one thick filament, Lattice SIM and STED separate the filaments that are really there &mdash; the difference between a picture and a measurement. <span class="wf-sim">Simulation, for illustration.</span></figcaption>
+      </figure>
+
+
+      <!-- The other half of the trade-off. Same structure, same display scaling
+           across every frame, so the dimming and the rising noise are real and
+           not a contrast trick. Simulated; simulate-bleaching.py regenerates it. -->
+      <!-- ===== Apply banner ===== -->
+      <div class="ws-apply">
+        <div class="wa-text">
+          <div class="rb-eyebrow">Applications</div>
+          <h3>Apply for a place</h3>
+          <p>Places are limited and allotted by selection, not first-come-first-served. The form asks about your microscopy experience, the systems you use and what you would bring to image &mdash; answer it from your own bench practice.</p>
+          <a class="btn ws-cta" data-ws-apply href="#workshop">Applications opening shortly</a>
+          <p class="ws-cta-note mono">Workshop applications are separate from conference registration. Selected participants must also be registered for AICBC 2026.</p>
+        </div>
+        <div class="wa-facts">
+          <div class="wf"><span>Dates</span><b>7&ndash;9 Dec 2026</b></div>
+          <div class="wf"><span>Venues</span><b>IISER Pune &amp; BRIC-NCCS</b></div>
+          <div class="wf"><span>Places</span><b class="prov">24</b></div>
+          <div class="wf"><span>Applications close</span><b class="prov">31 Oct 2026</b></div>
+          <div class="wf"><span>Decisions by</span><b class="prov">15 Nov 2026</b></div>
+          <div class="wf"><span>Fee</span><b class="prov">&#8377;3,000 student &middot; &#8377;5,000 general</b></div>
+        </div>
+      </div>
+
+      <!-- ===== Eligibility - the single most important filter, so it is a
+           callout rather than a paragraph in the flow. ===== -->
+      <div class="ws-elig">
+        <div class="we-flag mono">Eligibility &mdash; please read before applying</div>
+        <p>This workshop is intended for participants who <strong>already have a foundation in microscopy and practical experience with image acquisition and analysis</strong>. Prior hands-on experience is mandatory.</p>
+        <p>Applicants working in research laboratories or imaging core facilities where light microscopy is central to the research &mdash; and who provide access to, maintain, or deliver training in light microscopy for their institution or the wider community &mdash; are particularly encouraged to apply.</p>
+        <p class="we-warn">Applicants without prior hands-on experience in microscopy and image analysis may not be considered for selection.</p>
+      </div>
+
+      <div class="ws-two">
+        <div>
+          <h3 class="sub-htag orange">Why attend</h3>
+          <p>Go beyond conventional microscopy. Develop the knowledge and practical skill to decide <em>when</em>, <em>why</em> and <em>how</em> to use superresolution &mdash; and how to turn high-resolution images into meaningful quantitative biology.</p>
+          <p class="ws-pull">Take your imaging from resolution to understanding.</p>
+        </div>
+        <div>
+          <h3 class="sub-htag orange">What is covered</h3>
+          <div class="pills">
+            <span>Fundamentals of superresolution</span><span>Acquisition &amp; hands-on optimisation</span><span>Experimental design</span><span>Sample preparation</span><span>Quantitative image analysis</span><span>STED</span><span>Lattice SIM</span><span>Expert discussions</span><span>Biological &amp; biomedical applications</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Schedule. Deliberately NOT built with .tab/.tabpanel: the tab
+           script at the end of the file treats every .tab on the page as one
+           group, so a second tab set would break the conference programme.
+           Three stacked day blocks instead. ===== -->
+      <h3 class="sub-htag orange" style="margin-top:34px">Schedule</h3>
+      <p class="ws-sched-note">Timings below follow the convenor&rsquo;s working schedule and may shift by a few minutes on the day.</p>
+
+      <div class="ws-day mono">Day 1 &middot; Monday 7 December &middot; IISER Pune <em>&mdash; Foundations of superresolution</em></div>
+      <div class="sched">
+        <div class="slot"><div class="tm">13:30 &ndash; 14:00</div><div><div class="ttl">Registration</div><div class="dsc">IISER Pune.</div></div></div>
+        <div class="slot key"><div class="tm">14:00 &ndash; 14:35</div><div><div class="ttl">Welcome, introductions &amp; workshop overview</div><div class="dsc">Welcome note, participant introductions, and the learning objectives for the three days.</div></div></div>
+        <div class="slot alt"><div class="tm">14:35 &ndash; 15:20</div><div><div class="ttl">From conventional fluorescence to superresolution microscopy</div><div class="dsc">Where the diffraction limit comes from, and the families of methods that get past it.</div></div></div>
+        <div class="slot alt"><div class="tm">15:20 &ndash; 16:00</div><div><div class="ttl">Fundamentals of STED microscopy</div><div class="dsc">Principles, and standardising the system for STED.</div></div></div>
+        <div class="slot"><div class="tm">16:00 &ndash; 16:30</div><div><div class="ttl">Tea</div></div></div>
+        <div class="slot alt"><div class="tm">16:30 &ndash; 17:15</div><div><div class="ttl">Fundamentals of Lattice SIM</div><div class="dsc">Principles, and standardising the system for Lattice SIM.</div></div></div>
+        <div class="slot"><div class="tm">17:15 &ndash; 19:00</div><div><div class="ttl">Image analysis</div></div></div>
+        <div class="slot"><div class="tm">20:00 &ndash; 21:00</div><div><div class="ttl">Dinner</div><div class="dsc">Guest House, IISER Pune.</div></div></div>
+      </div>
+
+      <div class="ws-day mono">Day 2 &middot; Tuesday 8 December &middot; IISER Pune &amp; BRIC-NCCS <em>&mdash; Superresolution imaging and applications</em></div>
+      <p class="ws-sched-note">Breakfast 07:30&ndash;08:30 at the IISER Pune guest house. The first batch leaves for BRIC-NCCS at 08:30.</p>
+      <div class="sched">
+        <div class="slot alt"><div class="tm">09:00 &ndash; 13:00</div><div><div class="ttl">Hands-on demonstrations &mdash; parallel sessions</div><div class="dsc"><strong>Batch 1 &middot; BRIC-NCCS Imaging Facility</strong> &mdash; from confocal to STED: imaging parameters, designing a STED experiment, fluorophores, labelling and controls, imaging and analysis.<br><strong>Batch 2 &middot; IISER Pune</strong> &mdash; point scanning to Lattice SIM: optimisation of parameters, designing experimental parameters, imaging samples. Tea 11:00&ndash;11:30.</div></div></div>
+        <div class="slot"><div class="tm">13:00 &ndash; 14:00</div><div><div class="ttl">Lunch &middot; transport between campuses</div></div></div>
+        <div class="slot alt"><div class="tm">15:00 &ndash; 19:00</div><div><div class="ttl">Hands-on demonstrations &mdash; batches exchange</div><div class="dsc"><strong>Batch 2 &middot; BRIC-NCCS Imaging Facility</strong> &mdash; the STED programme.<br><strong>Batch 1 &middot; IISER Pune</strong> &mdash; the Lattice SIM programme. Tea 17:00&ndash;17:30.</div></div></div>
+      </div>
+
+      <div class="ws-day mono">Day 3 &middot; Wednesday 9 December &middot; IISER Pune <em>&mdash; Imaging and image analysis</em></div>
+      <div class="sched">
+        <div class="slot alt"><div class="tm">09:30 &ndash; 13:00</div><div><div class="ttl">Image analysis</div><div class="dsc">Hands-on image analysis using Aivia; image analysis for SIM superresolution data.</div></div></div>
+        <div class="slot"><div class="tm">13:00 &ndash; 14:00</div><div><div class="ttl">Lunch</div></div></div>
+        <div class="slot alt"><div class="tm">14:00 &ndash; 17:00</div><div><div class="ttl">Imaging your own prepared samples</div><div class="dsc">On any one system. <strong>Advance sign-up is required</strong> &mdash; indicate this on the application form.</div></div></div>
+        <div class="slot"><div class="tm">17:00 &ndash; 17:30</div><div><div class="ttl">Tea</div></div></div>
+        <div class="slot key"><div class="tm">17:30 &ndash; 18:00</div><div><div class="ttl">Workshop discussion, key takeaways &amp; valedictory</div><div class="dsc">The workshop closes in time for the conference&rsquo;s opening evening on the same day.</div></div></div>
+      </div>
+
+      <p class="ws-foot"><span class="prov-key">&deg;</span> Marked figures are provisional and awaiting confirmation by the organisers.</p>
+
+      <div class="ws-tail">
+        <a class="ws-poster" href="workshop-poster.pdf" download>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M4 21h16"/></svg>
+          Download the workshop poster <span class="mono">A3 &middot; PDF</span>
+        </a>
+        <a class="btn ws-cta" data-ws-apply href="#workshop">Applications opening shortly</a>
+      </div>
+
+      <p class="ws-contact">Questions about the workshop: <a href="mailto:aicbc2026@acads.iiserpune.ac.in">aicbc2026@acads.iiserpune.ac.in</a></p>
+
+      <script>
+      /* ---- WORKSHOP APPLICATION LINK ------------------------------------
+         Paste the Google Form URL between the quotes below and commit. Both
+         Apply buttons pick it up. Leave it empty and they stay inert, which
+         is why the page never shows a broken "apply" link before the form
+         exists.                                                            */
+      var WORKSHOP_FORM_URL = "";
+      (function(){
+        var btns = document.querySelectorAll('[data-ws-apply]');
+        for (var i = 0; i < btns.length; i++) {
+          var b = btns[i];
+          if (WORKSHOP_FORM_URL) {
+            b.href = WORKSHOP_FORM_URL;
+            b.target = '_blank';
+            b.rel = 'noopener noreferrer';
+            b.textContent = 'Apply to the workshop →';
+            b.classList.remove('is-pending');
+          } else {
+            b.classList.add('is-pending');
+            b.setAttribute('aria-disabled', 'true');
+            b.addEventListener('click', function(e){ e.preventDefault(); });
+          }
+        }
+      })();
+      </script>
     </section>
 
     <div class="rule"></div>
@@ -1930,7 +2419,7 @@
         <div class="sched">
           <div class="slot alt">
             <div class="tm">All day</div>
-            <div><div class="ttl">Pre-conference Workshops</div><div class="dsc">Parallel workshops at IISER Pune and NCCS Pune. Separate sign-up during registration; places are limited.</div></div>
+            <div><div class="ttl">Pre-conference Workshops</div><div class="dsc">Parallel workshops at IISER Pune and NCCS Pune. Separate sign-up; places are limited. The <a href="#workshop">Superresolution Microscopy workshop</a> runs 7&ndash;9 December and closes on this day.</div></div>
           </div>
           <div class="slot">
             <div class="tm">17:00 &ndash; 19:00</div>

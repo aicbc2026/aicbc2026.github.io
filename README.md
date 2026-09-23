@@ -16,6 +16,15 @@ img/                    all photographs and logos (WebP)
   logo-iscb.webp          Indian Society of Cell Biology
   logo-iiser.webp         IISER Pune
   logo-nccs.webp          NCCS Pune
+  ws-confocal.webp        workshop figure - simulated field, confocal
+  ws-sim.webp             the same field, Lattice SIM
+  ws-sted.webp            the same field, STED
+  ws-bleach-sim.webp      time-lapse bleaching series, Lattice SIM
+  ws-bleach-sted.webp     the same series, STED
+  ws-bleach-curve.webp    signal-remaining curves for both
+workshop-poster.pdf     A3 poster for the superresolution workshop (print)
+workshop-poster.png     the same poster at 300 dpi, for screens and slides
+workshop-banner.jpg     1200x630 workshop banner for WhatsApp / X / LinkedIn
 share-card.jpg          1200x630 preview for WhatsApp / X / LinkedIn
 favicon-32.png          browser tab icon
 icon-512.png            high-resolution app icon
@@ -44,6 +53,30 @@ the file. Outstanding at the time of writing:
 - Program & Abstract Book card has no target yet
 - X / Instagram icons are commented out until accounts exist
 - No accommodation section or abstract-submission guidelines yet
+
+### Superresolution workshop (added Sep 2026)
+
+Search `index.html` for `TODO(WS)`. The workshop section is live but three
+things are still placeholders:
+
+- `WORKSHOP_FORM_URL` at the end of the workshop section is empty. Paste the
+  Google Form link between the quotes and commit — both Apply buttons switch
+  from "Applications opening shortly" to a live link on their own. Nothing else
+  needs changing.
+- Figures marked with a small degree sign (class `prov`) are provisional:
+  24 places, 31 Oct application deadline, 15 Nov decisions, and the fee. Confirm
+  each with the organisers, correct it, then delete the `prov` class so the
+  marker and its footnote disappear.
+- The poster carries the same provisional figures. If any of them change,
+  the poster has to be regenerated as well as the page edited.
+
+The three-panel resolution figure (page and poster) is **simulated**, and says
+so in its caption: ground truth drawn at 10 nm/px, convolved with a Gaussian PSF
+at each modality's FWHM (~230 / ~115 / ~50 nm), then given shot noise. It is
+there because there was no real data to hand. Swapping in genuine confocal,
+Lattice SIM and STED frames of the same field from the two facilities would be
+better in every way - replace the three `img/ws-*.webp` files and drop the
+"Simulation, for illustration" line from the caption.
 
 ## Notes
 
