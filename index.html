@@ -1574,6 +1574,56 @@
   @media(max-width:560px){
     .ws-poster.on-dark{margin-left:0;margin-top:12px}
   }
+
+  /* ===== The workshop reads as its own thing inside the page: a tinted shell
+     with a dark masthead, so nobody mistakes it for another conference
+     section. Mirrors the poster. ===== */
+  .ws-shell{
+    background:var(--soft);border:1px solid var(--line-strong);
+    border-radius:18px;overflow:hidden;
+  }
+  .ws-masthead{
+    position:relative;overflow:hidden;color:#fff;padding:34px 34px 28px;
+    border-bottom:5px solid var(--nucleus);
+    background:
+      radial-gradient(120% 90% at 88% 4%, rgba(211,84,0,.40) 0%, transparent 58%),
+      linear-gradient(150deg,#16242b 0%,#0d3b34 62%,#0a332e 100%);
+  }
+  .ws-masthead > *{position:relative;z-index:2}
+  .wm-kicker{
+    font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    color:#ffb074;margin-bottom:18px;
+  }
+  .wm-title{
+    font-family:'Fraunces',serif;font-weight:800;font-size:2.5rem;line-height:1;
+    letter-spacing:-.02em;color:#fff;
+  }
+  .wm-title em{
+    display:block;font-style:italic;font-weight:600;font-size:.6em;
+    color:#ff9e56;margin-top:9px;
+  }
+  .wm-when{
+    margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.22);
+    font-size:1.02rem;font-weight:600;color:#fff;
+  }
+  .wm-when span{
+    display:block;font-weight:300;font-size:.92rem;
+    color:rgba(255,255,255,.7);margin-top:6px;
+  }
+  .ws-body{padding:30px 34px 34px}
+
+  /* panels that used the paper tone need to lift off it now */
+  .ws-shell .slot{background:#fff}
+  .ws-shell .ws-elig{background:#fff}
+  .ws-shell .pills span{background:#fff}
+  .ws-shell .ws-poster{background:#fff}
+  .ws-shell .ws-poster.on-dark{background:transparent}
+
+  @media(max-width:700px){
+    .ws-masthead{padding:26px 20px 22px}
+    .wm-title{font-size:1.8rem}
+    .ws-body{padding:24px 20px 26px}
+  }
   .ws-elig{
     border:1px solid var(--line-strong);border-left:5px solid var(--nucleus);
     background:var(--nucleus-soft);border-radius:12px;padding:22px 24px;margin-bottom:34px;
@@ -2061,11 +2111,16 @@
          both Apply buttons read "Applications opening shortly" and are inert,
          so the page never carries a dead link.
          ================================================================== -->
-    <section id="workshop" class="block">
-      <h2 class="htag orange">Pre-Conference Workshop</h2>
+    <section id="workshop" class="block ws-shell">
+      <header class="ws-masthead">
+        <div class="wm-kicker mono">Pre-conference workshop &middot; Indian Society of Cell Biology</div>
+        <h2 class="wm-title">Superresolution Microscopy<em>From Principles to Practice</em></h2>
+        <div class="wm-when">7&ndash;9 December 2026 &middot; IISER Pune &amp; BRIC-NCCS Pune
+          <span>Hands-on with STED and Lattice SIM &middot; limited places, by application</span>
+        </div>
+      </header>
 
-      <div class="ws-eyebrow mono">7&ndash;9 December 2026 &middot; IISER Pune &amp; BRIC-NCCS Pune &middot; Indian Society of Cell Biology</div>
-      <h3 class="ws-title">Superresolution Microscopy<em>From Principles to Practice</em></h3>
+      <div class="ws-body">
       <p class="lede">An intensive, advanced-level programme for researchers, imaging scientists and facility professionals who already work with microscopy. It takes imaging past the confocal &mdash; through the principles, experimental design, acquisition, optimisation, validation and quantitative analysis of superresolution, with extended hands-on time on <strong>STED</strong> and <strong>Lattice SIM</strong>.</p>
       <p>The workshop is deliberately small and highly interactive: participants work in two batches that rotate between the STED system at the <strong>BRIC-NCCS Imaging Facility</strong> and the Lattice SIM system at <strong>IISER Pune</strong>, with expert discussion, practical problem-solving and the possibility of imaging their own prepared samples. <strong>Full-time participation throughout the workshop is mandatory.</strong></p>
 
@@ -2126,19 +2181,6 @@
 
       <p class="vsw-verdict"><strong>SIM buys a factor of two almost for free; STED buys four or five and pays for it in photons.</strong> STED is visibly the sharper at frame&nbsp;1 &mdash; but by frame&nbsp;20 there is little left to image. A live, multicolour, whole-cell experiment usually wants SIM; a fixed sample where two structures sit 60&nbsp;nm apart wants STED. Neither is the better instrument.</p>
 
-      <h3 class="sub-htag orange" style="margin-top:30px">The trade-off in full</h3>
-      <div class="ws-vs">
-        <div class="vsr vsh"><span></span><b class="a">Lattice SIM</b><b class="b">STED</b></div>
-        <div class="vsr"><span>Lateral resolution</span><i>~2&times; confocal &mdash; 110&ndash;120 nm</i><i>~4&ndash;5&times; &mdash; 30&ndash;70 nm</i></div>
-        <div class="vsr"><span>Axial resolution</span><i>improved too, in 3D mode</i><i>needs 3D-STED, at a cost in light</i></div>
-        <div class="vsr"><span>Light dose</span><i>low</i><i>high &mdash; an intense depletion beam</i></div>
-        <div class="vsr"><span>Live cells</span><i>routine; time-lapse is practical</i><i>demanding; photobleaching limits you</i></div>
-        <div class="vsr"><span>Fluorophores</span><i>conventional dyes and fluorescent proteins</i><i>photostable dyes matched to the depletion line</i></div>
-        <div class="vsr"><span>Field &amp; speed</span><i>whole field at once, camera-based</i><i>point-scanned, slower over large areas</i></div>
-        <div class="vsr"><span>Main failure mode</span><i>reconstruction artefacts from poor raw data</i><i>bleaching and low signal</i></div>
-      </div>
-      <p class="ws-vs-note">SIM buys a factor of two almost for free; STED buys four or five and pays for it in photons. Neither is the &ldquo;better&rdquo; instrument &mdash; a live, multicolour, whole-cell experiment usually wants SIM, while a fixed sample where two structures sit 60&nbsp;nm apart wants STED. Every participant works on both systems, and a good part of the discussion is about which to reach for.</p>
-
       <!-- The other half of the trade-off. Same structure, same display scaling
            across every frame, so the dimming and the rising noise are real and
            not a contrast trick. Simulated; simulate-bleaching.py regenerates it. -->
@@ -2158,10 +2200,10 @@
         <div class="wa-facts">
           <div class="wf"><span>Dates</span><b>7&ndash;9 Dec 2026</b></div>
           <div class="wf"><span>Venues</span><b>IISER Pune &amp; BRIC-NCCS</b></div>
-          <div class="wf"><span>Places</span><b class="prov">24</b></div>
+          <div class="wf"><span>Participants</span><b class="prov">24 &middot; two batches of 12</b></div>
           <div class="wf"><span>Applications close</span><b class="prov">31 Oct 2026</b></div>
           <div class="wf"><span>Decisions by</span><b class="prov">15 Nov 2026</b></div>
-          <div class="wf"><span>Fee</span><b class="prov">&#8377;3,000 student &middot; &#8377;5,000 general</b></div>
+          <div class="wf"><span>Fee</span><b class="prov">&#8377;3,000 students &amp; post-docs<br>&#8377;5,000 faculty &amp; professionals</b></div>
         </div>
       </div>
 
@@ -2274,7 +2316,7 @@
          Apply buttons pick it up. Leave it empty and they stay inert, which
          is why the page never shows a broken "apply" link before the form
          exists.                                                            */
-      var WORKSHOP_FORM_URL = "";
+      var WORKSHOP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSc1AwaP4wVi1cO9bAv_EbR3Ew7I8ll4z0VEzwQpdgW1PwHL7A/viewform";
       (function(){
         var btns = document.querySelectorAll('[data-ws-apply]');
         for (var i = 0; i < btns.length; i++) {
@@ -2293,6 +2335,8 @@
         }
       })();
       </script>
+      </div>
+
     </section>
 
     <div class="rule"></div>
