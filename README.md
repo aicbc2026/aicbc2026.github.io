@@ -16,9 +16,9 @@ img/                    all photographs and logos (WebP)
   logo-iscb.webp          Indian Society of Cell Biology
   logo-iiser.webp         IISER Pune
   logo-nccs.webp          NCCS Pune
-  ws-confocal.webp        workshop figure - simulated field, confocal
-  ws-sim.webp             the same field, Lattice SIM
-  ws-sted.webp            the same field, STED
+  ws-spot-confocal.webp   two-point resolution panel, confocal
+  ws-spot-sim.webp        the same pair, Lattice SIM
+  ws-spot-sted.webp       the same pair, STED
   ws-bleach-sim.webp      time-lapse bleaching series, Lattice SIM
   ws-bleach-sted.webp     the same series, STED
   ws-bleach-curve.webp    signal-remaining curves for both

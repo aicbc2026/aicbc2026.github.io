@@ -1545,6 +1545,35 @@
     .vsw-bleach .blx,.vsw-curve,.vsw-key{margin-left:0}
     .vsw-curve{width:100%}
   }
+
+  /* Workshop day tabs. Own classes so the conference programme's tab script,
+     which grabs every .tab on the page, is left alone. */
+  .wtabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 20px}
+  .wtab{
+    font-family:'Fraunces',serif;font-weight:600;font-size:1rem;
+    padding:9px 22px;border-radius:40px;border:1.5px solid var(--line-strong);
+    background:#fff;color:var(--ink);cursor:pointer;transition:.2s;text-align:center;
+  }
+  .wtab:hover{border-color:var(--cell)}
+  .wtab[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .wtab .d{
+    display:block;font-family:'Spline Sans Mono',monospace;font-size:.6rem;
+    letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-top:3px;font-weight:400;
+  }
+  .wpanel[hidden]{display:none}
+
+  /* poster download, on the dark apply banner */
+  .ws-poster.on-dark{
+    background:transparent;border-color:rgba(255,255,255,.35);color:rgba(255,255,255,.88);
+    margin-left:12px;
+  }
+  .ws-poster.on-dark:hover{
+    background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6);color:#fff;
+  }
+  .ws-poster.on-dark .mono{color:rgba(255,255,255,.55)}
+  @media(max-width:560px){
+    .ws-poster.on-dark{margin-left:0;margin-top:12px}
+  }
   .ws-elig{
     border:1px solid var(--line-strong);border-left:5px solid var(--nucleus);
     background:var(--nucleus-soft);border-radius:12px;padding:22px 24px;margin-bottom:34px;
@@ -2110,29 +2139,6 @@
       </div>
       <p class="ws-vs-note">SIM buys a factor of two almost for free; STED buys four or five and pays for it in photons. Neither is the &ldquo;better&rdquo; instrument &mdash; a live, multicolour, whole-cell experiment usually wants SIM, while a fixed sample where two structures sit 60&nbsp;nm apart wants STED. Every participant works on both systems, and a good part of the discussion is about which to reach for.</p>
 
-      <h3 class="sub-htag orange" style="margin-top:30px">What that looks like in a cell</h3>
-      <figure class="ws-fig">
-        <div class="wf-row">
-          <div class="wf-one">
-            <img src="img/ws-confocal.webp" width="780" height="576" loading="lazy" decoding="async"
-                 alt="Simulated microtubule field at confocal resolution: filaments merge into one another and the magnified inset is an unresolved blur">
-            <figcaption>Confocal <span>~230 nm</span></figcaption>
-          </div>
-          <div class="wf-one hi">
-            <img src="img/ws-sim.webp" width="780" height="576" loading="lazy" decoding="async"
-                 alt="The same field at Lattice SIM resolution: individual filaments begin to separate">
-            <figcaption>Lattice SIM <span>~115 nm</span></figcaption>
-          </div>
-          <div class="wf-one hi">
-            <img src="img/ws-sted.webp" width="780" height="576" loading="lazy" decoding="async"
-                 alt="The same field at STED resolution: individual filaments are clearly separated and the inset resolves a crossing">
-            <figcaption>STED <span>~50 nm</span></figcaption>
-          </div>
-        </div>
-        <figcaption class="wf-cap">The same microtubule field, imaged three ways. Where the confocal sees one thick filament, Lattice SIM and STED separate the filaments that are really there &mdash; the difference between a picture and a measurement. <span class="wf-sim">Simulation, for illustration.</span></figcaption>
-      </figure>
-
-
       <!-- The other half of the trade-off. Same structure, same display scaling
            across every frame, so the dimming and the rising noise are real and
            not a contrast trick. Simulated; simulate-bleaching.py regenerates it. -->
@@ -2141,8 +2147,12 @@
         <div class="wa-text">
           <div class="rb-eyebrow">Applications</div>
           <h3>Apply for a place</h3>
-          <p>Places are limited and allotted by selection, not first-come-first-served. The form asks about your microscopy experience, the systems you use and what you would bring to image &mdash; answer it from your own bench practice.</p>
+          <p>Places are limited and allotted by selection, not first-come-first-served. Eleven questions, three of them written answers &mdash; about fifteen minutes. Answer them from your own bench practice.</p>
           <a class="btn ws-cta" data-ws-apply href="#workshop">Applications opening shortly</a>
+          <a class="ws-poster on-dark" href="workshop-poster.pdf" download>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M4 21h16"/></svg>
+            Poster <span class="mono">A3 &middot; PDF</span>
+          </a>
           <p class="ws-cta-note mono">Workshop applications are separate from conference registration. Selected participants must also be registered for AICBC 2026.</p>
         </div>
         <div class="wa-facts">
@@ -2178,53 +2188,85 @@
         </div>
       </div>
 
-      <!-- ===== Schedule. Deliberately NOT built with .tab/.tabpanel: the tab
-           script at the end of the file treats every .tab on the page as one
-           group, so a second tab set would break the conference programme.
-           Three stacked day blocks instead. ===== -->
+      <!-- ===== Schedule, as day tabs. Deliberately NOT using .tab/.tabpanel:
+           the conference tab script at the end of this file treats every .tab on
+           the page as a single group, so a second set would break the programme
+           tabs. Own classes, own short script below. ===== -->
       <h3 class="sub-htag orange" style="margin-top:34px">Schedule</h3>
-      <p class="ws-sched-note">Timings below follow the convenor&rsquo;s working schedule and may shift by a few minutes on the day.</p>
+      <p class="ws-sched-note">Select a day. Timings follow the convenor&rsquo;s working schedule and may shift by a few minutes on the day.</p>
 
-      <div class="ws-day mono">Day 1 &middot; Monday 7 December &middot; IISER Pune <em>&mdash; Foundations of superresolution</em></div>
-      <div class="sched">
-        <div class="slot"><div class="tm">13:30 &ndash; 14:00</div><div><div class="ttl">Registration</div><div class="dsc">IISER Pune.</div></div></div>
-        <div class="slot key"><div class="tm">14:00 &ndash; 14:35</div><div><div class="ttl">Welcome, introductions &amp; workshop overview</div><div class="dsc">Welcome note, participant introductions, and the learning objectives for the three days.</div></div></div>
-        <div class="slot alt"><div class="tm">14:35 &ndash; 15:20</div><div><div class="ttl">From conventional fluorescence to superresolution microscopy</div><div class="dsc">Where the diffraction limit comes from, and the families of methods that get past it.</div></div></div>
-        <div class="slot alt"><div class="tm">15:20 &ndash; 16:00</div><div><div class="ttl">Fundamentals of STED microscopy</div><div class="dsc">Principles, and standardising the system for STED.</div></div></div>
-        <div class="slot"><div class="tm">16:00 &ndash; 16:30</div><div><div class="ttl">Tea</div></div></div>
-        <div class="slot alt"><div class="tm">16:30 &ndash; 17:15</div><div><div class="ttl">Fundamentals of Lattice SIM</div><div class="dsc">Principles, and standardising the system for Lattice SIM.</div></div></div>
-        <div class="slot"><div class="tm">17:15 &ndash; 19:00</div><div><div class="ttl">Image analysis</div></div></div>
-        <div class="slot"><div class="tm">20:00 &ndash; 21:00</div><div><div class="ttl">Dinner</div><div class="dsc">Guest House, IISER Pune.</div></div></div>
+      <div class="wtabs" role="tablist" aria-label="Workshop programme by day">
+        <button class="wtab" role="tab" id="wtab-1" aria-controls="wpanel-1" aria-selected="true">Day 1<span class="d">Mon &middot; 7 Dec &middot; IISER</span></button>
+        <button class="wtab" role="tab" id="wtab-2" aria-controls="wpanel-2" aria-selected="false">Day 2<span class="d">Tue &middot; 8 Dec &middot; both</span></button>
+        <button class="wtab" role="tab" id="wtab-3" aria-controls="wpanel-3" aria-selected="false">Day 3<span class="d">Wed &middot; 9 Dec &middot; IISER</span></button>
       </div>
 
-      <div class="ws-day mono">Day 2 &middot; Tuesday 8 December &middot; IISER Pune &amp; BRIC-NCCS <em>&mdash; Superresolution imaging and applications</em></div>
-      <p class="ws-sched-note">Breakfast 07:30&ndash;08:30 at the IISER Pune guest house. The first batch leaves for BRIC-NCCS at 08:30.</p>
-      <div class="sched">
-        <div class="slot alt"><div class="tm">09:00 &ndash; 13:00</div><div><div class="ttl">Hands-on demonstrations &mdash; parallel sessions</div><div class="dsc"><strong>Batch 1 &middot; BRIC-NCCS Imaging Facility</strong> &mdash; from confocal to STED: imaging parameters, designing a STED experiment, fluorophores, labelling and controls, imaging and analysis.<br><strong>Batch 2 &middot; IISER Pune</strong> &mdash; point scanning to Lattice SIM: optimisation of parameters, designing experimental parameters, imaging samples. Tea 11:00&ndash;11:30.</div></div></div>
-        <div class="slot"><div class="tm">13:00 &ndash; 14:00</div><div><div class="ttl">Lunch &middot; transport between campuses</div></div></div>
-        <div class="slot alt"><div class="tm">15:00 &ndash; 19:00</div><div><div class="ttl">Hands-on demonstrations &mdash; batches exchange</div><div class="dsc"><strong>Batch 2 &middot; BRIC-NCCS Imaging Facility</strong> &mdash; the STED programme.<br><strong>Batch 1 &middot; IISER Pune</strong> &mdash; the Lattice SIM programme. Tea 17:00&ndash;17:30.</div></div></div>
+      <div class="wpanel" role="tabpanel" id="wpanel-1" aria-labelledby="wtab-1">
+        <p class="day-venue">IISER Pune &middot; foundations of superresolution</p>
+        <div class="sched">
+          <div class="slot"><div class="tm">13:30 &ndash; 14:35</div><div><div class="ttl">Registration, welcome &amp; workshop overview</div><div class="dsc">Introductions and the learning objectives for the three days.</div></div></div>
+          <div class="slot alt"><div class="tm">14:35 &ndash; 16:00</div><div><div class="ttl">From conventional fluorescence to superresolution &middot; fundamentals of STED</div><div class="dsc">Where the diffraction limit comes from, and standardising the system for STED. Tea at 16:00.</div></div></div>
+          <div class="slot alt"><div class="tm">16:30 &ndash; 17:15</div><div><div class="ttl">Fundamentals of Lattice SIM</div><div class="dsc">Principles, and standardising the system for Lattice SIM.</div></div></div>
+          <div class="slot"><div class="tm">17:15 &ndash; 19:00</div><div><div class="ttl">Image analysis</div></div></div>
+          <div class="slot"><div class="tm">20:00 &ndash; 21:00</div><div><div class="ttl">Dinner</div><div class="dsc">Guest House, IISER Pune.</div></div></div>
+        </div>
       </div>
 
-      <div class="ws-day mono">Day 3 &middot; Wednesday 9 December &middot; IISER Pune <em>&mdash; Imaging and image analysis</em></div>
-      <div class="sched">
-        <div class="slot alt"><div class="tm">09:30 &ndash; 13:00</div><div><div class="ttl">Image analysis</div><div class="dsc">Hands-on image analysis using Aivia; image analysis for SIM superresolution data.</div></div></div>
-        <div class="slot"><div class="tm">13:00 &ndash; 14:00</div><div><div class="ttl">Lunch</div></div></div>
-        <div class="slot alt"><div class="tm">14:00 &ndash; 17:00</div><div><div class="ttl">Imaging your own prepared samples</div><div class="dsc">On any one system. <strong>Advance sign-up is required</strong> &mdash; indicate this on the application form.</div></div></div>
-        <div class="slot"><div class="tm">17:00 &ndash; 17:30</div><div><div class="ttl">Tea</div></div></div>
-        <div class="slot key"><div class="tm">17:30 &ndash; 18:00</div><div><div class="ttl">Workshop discussion, key takeaways &amp; valedictory</div><div class="dsc">The workshop closes in time for the conference&rsquo;s opening evening on the same day.</div></div></div>
+      <div class="wpanel" role="tabpanel" id="wpanel-2" aria-labelledby="wtab-2" hidden>
+        <p class="day-venue">IISER Pune &amp; BRIC-NCCS &middot; hands-on, in two batches</p>
+        <div class="sched">
+          <div class="slot"><div class="tm">07:30 &ndash; 08:30</div><div><div class="ttl">Breakfast</div><div class="dsc">IISER Pune guest house. The first batch leaves for BRIC-NCCS at 08:30.</div></div></div>
+          <div class="slot alt"><div class="tm">09:00 &ndash; 13:00</div><div><div class="ttl">Hands-on demonstrations &mdash; parallel sessions</div><div class="dsc"><strong>Batch 1 &middot; BRIC-NCCS</strong> &mdash; confocal to STED: imaging parameters, fluorophores, labelling and controls.<br><strong>Batch 2 &middot; IISER Pune</strong> &mdash; point scanning to Lattice SIM: optimisation and experimental design. Tea at 11:00.</div></div></div>
+          <div class="slot"><div class="tm">13:00 &ndash; 14:00</div><div><div class="ttl">Lunch &middot; transport between campuses</div></div></div>
+          <div class="slot alt"><div class="tm">15:00 &ndash; 19:00</div><div><div class="ttl">Hands-on demonstrations &mdash; batches exchange</div><div class="dsc">Batch 2 takes the STED programme at BRIC-NCCS; batch 1 takes Lattice SIM at IISER Pune. Tea at 17:00.</div></div></div>
+        </div>
+      </div>
+
+      <div class="wpanel" role="tabpanel" id="wpanel-3" aria-labelledby="wtab-3" hidden>
+        <p class="day-venue">IISER Pune &middot; analysis and your own samples</p>
+        <div class="sched">
+          <div class="slot alt"><div class="tm">09:30 &ndash; 13:00</div><div><div class="ttl">Image analysis</div><div class="dsc">Hands-on analysis using Aivia, and analysis of SIM superresolution data.</div></div></div>
+          <div class="slot"><div class="tm">13:00 &ndash; 14:00</div><div><div class="ttl">Lunch</div></div></div>
+          <div class="slot alt"><div class="tm">14:00 &ndash; 17:00</div><div><div class="ttl">Imaging your own prepared samples</div><div class="dsc">On any one system. Arranged with selected participants in advance.</div></div></div>
+          <div class="slot key"><div class="tm">17:30 &ndash; 18:00</div><div><div class="ttl">Discussion, key takeaways &amp; valedictory</div><div class="dsc">The workshop closes in time for the conference&rsquo;s opening evening the same day.</div></div></div>
+        </div>
       </div>
 
       <p class="ws-foot"><span class="prov-key">&deg;</span> Marked figures are provisional and awaiting confirmation by the organisers.</p>
 
       <div class="ws-tail">
-        <a class="ws-poster" href="workshop-poster.pdf" download>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M4 21h16"/></svg>
-          Download the workshop poster <span class="mono">A3 &middot; PDF</span>
-        </a>
         <a class="btn ws-cta" data-ws-apply href="#workshop">Applications opening shortly</a>
       </div>
 
       <p class="ws-contact">Questions about the workshop: <a href="mailto:aicbc2026@acads.iiserpune.ac.in">aicbc2026@acads.iiserpune.ac.in</a></p>
+
+      <script>
+      /* ---- workshop day tabs (scoped; the conference tabs have their own) ---- */
+      (function(){
+        var tabs = [].slice.call(document.querySelectorAll('.wtab'));
+        if (!tabs.length) return;
+        function select(i){
+          tabs.forEach(function(t, j){
+            var panel = document.getElementById(t.getAttribute('aria-controls'));
+            t.setAttribute('aria-selected', j === i ? 'true' : 'false');
+            t.tabIndex = j === i ? 0 : -1;
+            if (panel) panel.hidden = j !== i;
+          });
+        }
+        tabs.forEach(function(t, i){
+          t.addEventListener('click', function(){ select(i); });
+          t.addEventListener('keydown', function(e){
+            var n = null;
+            if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+            if (e.key === 'ArrowLeft')  n = (i - 1 + tabs.length) % tabs.length;
+            if (e.key === 'Home') n = 0;
+            if (e.key === 'End')  n = tabs.length - 1;
+            if (n !== null){ e.preventDefault(); select(n); tabs[n].focus(); }
+          });
+        });
+        select(0);
+      })();
+      </script>
 
       <script>
       /* ---- WORKSHOP APPLICATION LINK ------------------------------------
