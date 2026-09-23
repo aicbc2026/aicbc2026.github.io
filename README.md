@@ -78,6 +78,23 @@ Lattice SIM and STED frames of the same field from the two facilities would be
 better in every way - replace the three `img/ws-*.webp` files and drop the
 "Simulation, for illustration" line from the caption.
 
+## Navigation
+
+The site is one file but behaves as tabs: the nav shows one section at a time
+rather than scrolling through all of them. It is built at runtime by the script
+at the very bottom of `index.html`, from the nav links themselves — nothing in
+the markup is wrapped or rearranged, so adding a section means adding a
+`<section id="x">` and a nav link to `#x`, and it becomes a tab on its own.
+
+Everything in the two-column intro (overview, the three "About" blocks, fees,
+venue, dates, organisers, contact) is one tab, Overview. Each later section is
+a tab of its own.
+
+The address bar keeps up, so `/#workshop` and every link already shared still
+land in the right place, and the back button steps through the tabs. With
+JavaScript off the whole page is visible and the nav links behave as the plain
+anchors they are — and printing gives the entire document, not one tab.
+
 ## Notes
 
 - The masthead overlay is a Gray–Scott reaction–diffusion simulation, confined

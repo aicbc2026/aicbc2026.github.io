@@ -1700,6 +1700,22 @@
     .ws-apply h3{font-size:1.28rem}
   }
 
+
+  /* ===== Tabbed views =========================================================
+     The site was one very long scroll. The nav now behaves like tabs: one
+     section is shown at a time and the address bar keeps up, so /#workshop and
+     every link already shared still land in the right place.
+
+     The hiding is done from script, never from CSS alone - with JavaScript off
+     the page stays exactly what it was, a complete scrolling document. ======= */
+  .v-off{display:none !important}
+  #main{scroll-margin-top:96px}
+  @media (prefers-reduced-motion:no-preference){
+    .v-in{animation:vfade .24s ease both}
+    @keyframes vfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  }
+  /* printing should give the whole document, not one tab */
+  @media print{ .v-off{display:block !important} }
 </style>
 </head>
 <body>
@@ -3615,6 +3631,108 @@
     if(!remote) monogram(box(card), name);
     tryLocal(card, img, name, 0);   // a local headshot always wins if present
   });
+})();
+</script>
+
+<script>
+/* ============================ TABBED VIEWS ==================================
+   Built at runtime from the nav, so nothing in the markup had to be rearranged
+   and no section had to be wrapped. Each nav link resolves to the block that
+   contains its target: everything in the two-column intro belongs to Overview,
+   and each later <section> is a view of its own.
+
+   Progressive enhancement: if this script does not run, every section is
+   visible and the nav links behave as the plain anchors they are.
+   ========================================================================== */
+(function () {
+  var nav = [].slice.call(document.querySelectorAll('nav a[href^="#"]'));
+  var main = document.getElementById('main');
+  if (!nav.length || !main) return;
+
+  var grid = document.querySelector('.body-grid');
+  var views = [];          // the blocks we swap between
+  var canonical = [];      // views[i] -> the nav id that labels it
+
+  nav.forEach(function (a) {
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (!el) return;
+    var view = (grid && grid.contains(el)) ? grid : el;
+    var i = views.indexOf(view);
+    if (i === -1) { views.push(view); canonical.push(id); }
+  });
+  if (views.length < 2) return;
+
+  // the horizontal rules between sections separated things that are now apart
+  var rules = [].slice.call(main.children)
+    .filter(function (c) { return c !== grid; })
+    .reduce(function (acc, c) {
+      return acc.concat([].slice.call(c.children).filter(function (k) {
+        return k.classList && k.classList.contains('rule');
+      }));
+    }, []);
+
+  function viewFor(el) {
+    for (var i = 0; i < views.length; i++) {
+      if (views[i] === el || views[i].contains(el)) return i;
+    }
+    return -1;
+  }
+
+  var current = -1;
+  function showView(i, animate) {
+    if (i < 0 || i === current) return;
+    current = i;
+    views.forEach(function (v, j) {
+      v.classList.toggle('v-off', j !== i);
+      if (j === i && animate) {
+        v.classList.remove('v-in');
+        void v.offsetWidth;            /* restart the animation */
+        v.classList.add('v-in');
+      }
+    });
+    rules.forEach(function (r) { r.classList.add('v-off'); });
+    nav.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href').slice(1) === canonical[i]);
+    });
+    document.title = document.title;   /* left alone deliberately: one page, one title */
+  }
+
+  function go(id, animate, scroll) {
+    var el = id && document.getElementById(id);
+    var i = el ? viewFor(el) : -1;
+    if (i === -1) return false;        /* not part of a view - leave it alone */
+    var switching = i !== current;
+    showView(i, animate && switching);
+    if (scroll) {
+      /* landing on a whole view goes to the top of the content; a link to
+         something inside one goes to that thing. Without this, a deep link
+         keeps the scroll position it had while the rest of the page was
+         still on screen, and drops you into the middle of nowhere. */
+      var head = (canonical[i] === id) || (el === views[i]);
+      var how = switching ? 'instant' : 'smooth';
+      if (head) window.scrollTo({ top: Math.max(0, main.offsetTop - 86), behavior: how });
+      else el.scrollIntoView({ behavior: how, block: 'start' });
+    }
+    return true;
+  }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || a.hasAttribute('data-ws-apply')) return;
+    var id = a.getAttribute('href').slice(1);
+    if (!id || !document.getElementById(id)) return;
+    if (go(id, true, true)) {
+      e.preventDefault();
+      if (location.hash !== '#' + id) history.pushState(null, '', '#' + id);
+    }
+  });
+
+  window.addEventListener('popstate', function () {
+    go(location.hash.slice(1) || canonical[0], true, true);
+  });
+
+  go(location.hash.slice(1) || canonical[0], false, !!location.hash);
 })();
 </script>
 </body>
