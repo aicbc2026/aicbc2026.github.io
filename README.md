@@ -64,9 +64,11 @@ things are still placeholders:
   from "Applications opening shortly" to a live link on their own. Nothing else
   needs changing.
 - Figures marked with a small degree sign (class `prov`) are provisional:
-  24 places, 31 Oct application deadline, 15 Nov decisions, and the fee. Confirm
-  each with the organisers, correct it, then delete the `prov` class so the
-  marker and its footnote disappear.
+  24 participants, the 31 Oct application deadline and the 15 Nov decision date.
+  Confirm each with the organisers, correct it, then delete the `prov` class so
+  the marker and its footnote disappear. The fee is confirmed and carries no
+  marker: Rs 5,000 students and post-docs, Rs 10,000 faculty and professionals,
+  including all meals and two nights' shared accommodation.
 - The poster carries the same provisional figures. If any of them change,
   the poster has to be regenerated as well as the page edited.
 
