@@ -22,6 +22,8 @@ img/                    all photographs and logos (WebP)
   ws-bleach-sim.webp      time-lapse bleaching series, Lattice SIM
   ws-bleach-sted.webp     the same series, STED
   ws-bleach-curve.webp    signal-remaining curves for both
+  logo-leica.webp         Leica Microsystems, instrument partner
+  logo-zeiss.webp         ZEISS, instrument partner
 workshop-poster.pdf     A3 poster for the superresolution workshop (print)
 workshop-poster.png     the same poster at 300 dpi, for screens and slides
 workshop-banner.jpg     1200x630 workshop banner for WhatsApp / X / LinkedIn
@@ -63,12 +65,18 @@ things are still placeholders:
   Google Form link between the quotes and commit — both Apply buttons switch
   from "Applications opening shortly" to a live link on their own. Nothing else
   needs changing.
-- Figures marked with a small degree sign (class `prov`) are provisional:
-  24 participants, the 31 Oct application deadline and the 15 Nov decision date.
+- Figures marked with a small degree sign (class `prov`) are provisional: the
+  31 Oct application deadline and the 15 Nov decision date.
   Confirm each with the organisers, correct it, then delete the `prov` class so
   the marker and its footnote disappear. The fee is confirmed and carries no
   marker: Rs 5,000 students and post-docs, Rs 10,000 faculty and professionals,
-  including all meals and two nights' shared accommodation.
+  including all meals and two nights' shared accommodation. Participants are
+  confirmed at 12, in two batches of six.
+
+The Leica and ZEISS marks are their own, shown as instrument partners for this
+workshop. Both sit on white cards: Leica's artwork ships on a white ground and
+ZEISS's blue tile is meant to sit on white, so a bare logo on the section's
+paper tone reads as a stray rectangle.
 - The poster carries the same provisional figures. If any of them change,
   the poster has to be regenerated as well as the page edited.
 

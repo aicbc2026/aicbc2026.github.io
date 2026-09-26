@@ -1691,6 +1691,31 @@
   }
   .ws-poster:hover{text-decoration:none;border-color:var(--cell);color:var(--cell-text);background:var(--cell-soft)}
   .ws-poster .mono{font-size:.72rem;color:var(--muted);font-weight:400}
+
+  .ws-partners{
+    margin-top:30px;padding-top:20px;border-top:1px solid var(--line-strong);
+    display:flex;align-items:center;gap:26px;flex-wrap:wrap;
+  }
+  .wp-lab{
+    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  }
+  .wp-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  /* white cards: the Leica mark ships on white, and ZEISS's blue tile is meant
+     to sit on white too. Against the section's paper tone a bare logo reads as
+     a stray rectangle. */
+  .wp-row .card{
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:10px 16px;display:flex;align-items:center;justify-content:center;
+  }
+  .wp-row img{display:block;height:34px;width:auto}
+  .wp-row img.wp-sq{height:30px}
+  @media(max-width:560px){
+    .ws-partners{gap:14px}
+    .wp-row{gap:12px}
+    .wp-row .card{padding:8px 12px}
+    .wp-row img{height:28px}
+    .wp-row img.wp-sq{height:25px}
+  }
   .ws-contact{font-size:.9rem;color:var(--muted);margin-top:18px;line-height:1.7}
   .ws-contact-sub{font-size:.85rem;opacity:.85}
 
@@ -2169,7 +2194,7 @@
 
       <div class="ws-body">
       <p class="lede">An intensive, advanced-level programme for researchers, imaging scientists and facility professionals who already work with microscopy. It takes imaging past the confocal &mdash; through the principles, experimental design, acquisition, optimisation, validation and quantitative analysis of superresolution, with extended hands-on time on <strong>STED</strong> and <strong>Lattice SIM</strong>.</p>
-      <p>The workshop is deliberately small and highly interactive: participants work in two batches that rotate between the STED system at the <strong>BRIC-NCCS Imaging Facility</strong> and the Lattice SIM system at <strong>IISER Pune</strong>, with expert discussion, practical problem-solving and the possibility of imaging their own prepared samples. <strong>Full-time participation throughout the workshop is mandatory.</strong></p>
+      <p>The workshop is deliberately small and highly interactive: twelve participants work in two batches of six that rotate between the STED system at the <strong>BRIC-NCCS Imaging Facility</strong> and the Lattice SIM system at <strong>IISER Pune</strong>, with expert discussion, practical problem-solving and the possibility of imaging their own prepared samples. <strong>Full-time participation throughout the workshop is mandatory.</strong></p>
 
 
       <!-- Resolution figure. Simulated, and labelled as such: ground truth drawn
@@ -2247,7 +2272,7 @@
         <div class="wa-facts">
           <div class="wf"><span>Dates</span><b>7&ndash;9 Dec 2026</b></div>
           <div class="wf"><span>Venues</span><b>IISER Pune &amp; BRIC-NCCS</b></div>
-          <div class="wf"><span>Participants</span><b class="prov">24 &middot; two batches of 12</b></div>
+          <div class="wf"><span>Participants</span><b>12 &middot; two batches of six</b></div>
           <div class="wf"><span>Applications close</span><b class="prov">31 Oct 2026</b></div>
           <div class="wf"><span>Decisions by</span><b class="prov">15 Nov 2026</b></div>
           <div class="wf"><span>Fee</span><b>&#8377;5,000 students &amp; post-docs<br>&#8377;10,000 faculty &amp; professionals</b></div>
@@ -2333,6 +2358,17 @@
 
       <div class="ws-tail">
         <a class="btn ws-cta" data-ws-apply href="#workshop">Applications opening shortly</a>
+      </div>
+
+
+      <!-- The vendors behind the two systems. Their logos are their own marks,
+           used with permission for the workshop they support. -->
+      <div class="ws-partners">
+        <div class="wp-lab mono">Instrument partners</div>
+        <div class="wp-row">
+          <span class="card"><img src="img/logo-leica.webp" width="440" height="268" loading="lazy" decoding="async" alt="Leica Microsystems"></span>
+          <span class="card"><img class="wp-sq" src="img/logo-zeiss.webp" width="300" height="300" loading="lazy" decoding="async" alt="ZEISS"></span>
+        </div>
       </div>
 
       <p class="ws-contact">Questions about the workshop: <a href="mailto:aicbc2026.workshop@gmail.com">aicbc2026.workshop@gmail.com</a><br><span class="ws-contact-sub">Anything about the conference itself: <a href="mailto:aicbc2026@acads.iiserpune.ac.in">aicbc2026@acads.iiserpune.ac.in</a></span></p>
