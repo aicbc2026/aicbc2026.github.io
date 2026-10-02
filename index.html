@@ -1482,7 +1482,7 @@
     .bl-x,.bl-curve{margin-left:0}
   }
 
-  /* ===== Lattice SIM vs STED, side by side - mirrors the poster's band ===== */
+  /* ===== The two showcases, side by side - mirrors the poster's band ======= */
   .vsweb{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:18px 0 0;align-items:start}
   .vsw-lab{
     font-family:'Spline Sans Mono',monospace;font-size:.74rem;letter-spacing:.12em;
@@ -1491,59 +1491,48 @@
   }
   .vsw-lab.a{color:var(--cell-text)}
   .vsw-lab.b{color:var(--nucleus-text)}
+  .vsw-lab i{
+    font-style:normal;text-transform:none;letter-spacing:.01em;font-weight:400;
+    font-family:var(--sans,inherit);font-size:.92rem;color:var(--muted);
+  }
 
-  .vsw-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  .vsw-trio img{display:block;width:100%;height:auto;border-radius:6px;border:1px solid var(--line-strong)}
-  .vsw-trio .hi img{border-color:var(--nucleus)}
-  .vsw-trio span{
+  /* Each method against ordinary confocal imaging - the same two-up shape on
+     both sides, so neither reads as the headline. */
+  .shw-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .shw-pair img{display:block;width:100%;height:auto;border-radius:6px;border:1px solid var(--line-strong)}
+  .shw-a .shw-pair .hi img{border-color:var(--cell)}
+  .shw-b .shw-pair .hi img{border-color:var(--nucleus)}
+  .shw-pair span{
     display:block;margin-top:7px;text-align:center;
     font-family:'Spline Sans Mono',monospace;font-size:.68rem;letter-spacing:.08em;
     text-transform:uppercase;color:var(--muted);line-height:1.6;
   }
-  .vsw-trio span i{display:block;font-style:normal;font-size:.62rem;opacity:.75}
-  .vsw-trio .hi span{color:var(--nucleus-text)}
+  .shw-a .shw-pair .hi span{color:var(--cell-text)}
+  .shw-b .shw-pair .hi span{color:var(--nucleus-text)}
 
-  .vsw-bleach .blr{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:center;margin-bottom:7px}
-  .vsw-bleach .blr span{
-    font-family:'Spline Sans Mono',monospace;font-size:.66rem;letter-spacing:.08em;
-    text-transform:uppercase;text-align:right;line-height:1.4;
-  }
-  .vsw-bleach .blr span.a{color:var(--cell-text)}
-  .vsw-bleach .blr span.b{color:var(--nucleus-text)}
-  .vsw-bleach img{display:block;width:100%;height:auto;border-radius:5px}
-  .vsw-bleach .blx{
-    display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:4px 0 0 86px;
+  .shw-strip{display:block;width:100%;height:auto;border-radius:5px;margin-top:14px}
+  .shw-x{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:5px;
     font-family:'Spline Sans Mono',monospace;font-size:.64rem;letter-spacing:.06em;
     text-transform:uppercase;color:var(--muted);text-align:center;
   }
-  .vsw-bleach .blx i{font-style:normal}
-  .vsw-curve{display:block;width:calc(100% - 86px);height:auto;margin:14px 0 0 86px;border-radius:5px}
-  .vsw-key{
-    display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;margin:8px 0 0 86px;
-    font-family:'Spline Sans Mono',monospace;font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;
-  }
-  .vsw-key .a{color:var(--cell-text)}
-  .vsw-key .b{color:var(--nucleus-text)}
-  .vsw-key .a::before,.vsw-key .b::before{
-    content:"";display:inline-block;width:14px;height:3px;border-radius:2px;
-    margin-right:6px;vertical-align:middle;background:currentColor;
-  }
-  .vsw-key em{font-style:normal;color:var(--muted);text-transform:none;letter-spacing:.02em}
+  .shw-x i{font-style:normal}
 
   .vsw-cap{font-size:.85rem;line-height:1.5;color:#4d5b63;margin-top:12px}
+  .vsw-cap strong{color:var(--ink)}
   .vsw-verdict{
     font-size:.98rem;line-height:1.6;color:#33434b;margin-top:20px;
     padding-top:14px;border-top:1px solid var(--line-strong);max-width:88ch;
   }
   .vsw-verdict strong{color:var(--ink)}
+  .vsw-verdict .inst{
+    font-family:'Fraunces',serif;font-size:1.22em;font-weight:700;
+    letter-spacing:-.01em;line-height:1;
+  }
+  .vsw-verdict .inst.a{color:var(--cell-text)}
+  .vsw-verdict .inst.b{color:var(--nucleus-text)}
   @media(max-width:880px){
     .vsweb{grid-template-columns:1fr;gap:30px}
-  }
-  @media(max-width:700px){
-    .vsw-bleach .blr{grid-template-columns:1fr;gap:3px}
-    .vsw-bleach .blr span{text-align:left}
-    .vsw-bleach .blx,.vsw-curve,.vsw-key{margin-left:0}
-    .vsw-curve{width:100%}
   }
 
   /* Workshop day tabs. Own classes so the conference programme's tab script,
@@ -1590,6 +1579,33 @@
       linear-gradient(150deg,#16242b 0%,#0d3b34 62%,#0a332e 100%);
   }
   .ws-masthead > *{position:relative;z-index:2}
+
+  /* The same optical diagram as the poster: a point object is imaged as a disc
+     of finite width. Hidden on narrow screens, where there is no spare room. */
+  .ws-masthead > .optics{
+    position:absolute;right:30px;top:50%;transform:translateY(-50%);
+    width:min(360px,40%);height:auto;z-index:1;pointer-events:none;
+  }
+  .optics .ax{stroke:rgba(255,255,255,.20);stroke-width:1;stroke-dasharray:5 5}
+  .optics .wave{stroke:rgba(255,255,255,.52);stroke-width:1.5;fill:none}
+  .optics .ray{stroke:rgba(255,255,255,.26);stroke-width:1.1;fill:none}
+  .optics .lens{stroke:rgba(255,255,255,.55);stroke-width:1.6;fill:rgba(255,255,255,.05)}
+  .optics .tick{stroke:rgba(255,255,255,.55);stroke-width:1.3}
+  .optics .lab{
+    font-family:'Spline Sans Mono',monospace;font-size:13px;letter-spacing:.09em;fill:rgba(255,255,255,.52);
+    text-transform:uppercase;
+  }
+  .optics .eq{font-family:'Fraunces',serif;font-size:17px;font-style:italic;fill:#ff9e56}
+  .optics .eq.dim{font-size:16px;fill:rgba(255,158,86,.62)}
+  .optics .cap{font-size:15.5px;fill:rgba(255,255,255,.62);letter-spacing:.005em}
+  @media(max-width:860px){ .ws-masthead > .optics{display:none} }
+  /* With the diagram showing, the text column stops short of it so the rule
+     under the dates does not run through the lens. */
+  @media(min-width:861px){
+    .ws-masthead .wm-kicker,
+    .ws-masthead .wm-title,
+    .ws-masthead .wm-when{max-width:58%}
+  }
   .wm-kicker{
     font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
     color:#ffb074;margin-bottom:18px;
@@ -2185,10 +2201,45 @@
          ================================================================== -->
     <section id="workshop" class="block ws-shell">
       <header class="ws-masthead">
+        <svg class="optics" viewBox="14 54 462 250" role="img"
+             aria-label="Why there is a limit: visible light of about 550 nanometres, collected by an objective of numerical aperture 1.4, images a point as a disc about 200 nanometres across.">
+          <defs>
+            <radialGradient id="wairy">
+              <stop offset="0%" stop-color="#ffd6b0" stop-opacity=".95"/>
+              <stop offset="28%" stop-color="#ff9e56" stop-opacity=".75"/>
+              <stop offset="100%" stop-color="#ff9e56" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- 1 - the light. One period is bracketed, so lambda is a length you can see. -->
+          <path class="wave" d="M26 150 Q33.25 120 40.5 150 T55 150 T69.5 150 T84 150 T98.5 150 T113 150 T127.5 150 T142 150 T156.5 150 T171 150"/>
+          <line class="tick" x1="55" y1="112" x2="55" y2="128"/>
+          <line class="tick" x1="84" y1="112" x2="84" y2="128"/>
+          <line class="tick" x1="55" y1="120" x2="84" y2="120"/>
+          <text class="eq" x="69" y="106" text-anchor="middle">&#955;</text>
+          <text class="lab" x="98" y="205" text-anchor="middle">550 nm &#183; visible</text>
+
+          <!-- 2 - the objective. Its aperture is the only other term. -->
+          <path class="ray" d="M171 150 L250 74 M171 150 L250 150 M171 150 L250 226"/>
+          <path class="lens" d="M250 62 Q286 150 250 238 Q214 150 250 62 Z"/>
+          <path class="ray" d="M250 74 L392 150 M250 150 L392 150 M250 226 L392 150"/>
+          <text class="lab" x="250" y="262" text-anchor="middle">objective &#183; NA 1.4</text>
+
+          <!-- 3 - the result. Not a point: a disc about 200 nm across. -->
+          <circle cx="392" cy="150" r="44" fill="url(#wairy)"/>
+          <circle cx="392" cy="150" r="29" fill="none" stroke="#ff9e56" stroke-opacity=".30" stroke-width="1.1"/>
+          <circle cx="392" cy="150" r="42" fill="none" stroke="#ff9e56" stroke-opacity=".15" stroke-width="1"/>
+          <line class="tick" x1="363" y1="200" x2="363" y2="218"/>
+          <line class="tick" x1="421" y1="200" x2="421" y2="218"/>
+          <line class="tick" x1="363" y1="212" x2="421" y2="212"/>
+          <text class="eq" x="388" y="242" text-anchor="middle">d = &#955;/2NA &#8776; 200 nm</text>
+
+          <text class="cap" x="239" y="296" text-anchor="middle">Visible light cannot image a point smaller than this.</text>
+        </svg>
         <div class="wm-kicker mono">Pre-conference workshop &middot; Indian Society of Cell Biology</div>
         <h2 class="wm-title">Superresolution Microscopy<em>From Principles to Practice</em></h2>
         <div class="wm-when">7&ndash;9 December 2026 &middot; IISER Pune &amp; BRIC-NCCS Pune
-          <span>Hands-on with STED and Lattice SIM &middot; limited places, by application</span>
+          <span>Hands-on with Lattice SIM and STED &middot; limited places, by application</span>
         </div>
       </header>
 
@@ -2205,57 +2256,52 @@
            trade-off, and which method a question needs is the actual teaching
            content of the workshop - hence this table. -->
 
-      <!-- The argument, in the same order as the poster: what each instrument is
-           good at, side by side, before any table. -->
-      <h3 class="sub-htag orange" style="margin-top:30px">Lattice SIM <em>vs</em> STED</h3>
-      <p>Both systems break the diffraction limit, and they break it differently. Choosing well is most of the skill &mdash; which is why every participant works on both.</p>
+      <!-- The same two demonstrations as the poster, and labelled the same way:
+           diffraction-limited against superresolution, with no instrument named
+           on either figure. Which method does which is taught, not advertised. -->
+      <h3 class="sub-htag orange" style="margin-top:30px">Past the <em>diffraction</em> limit</h3>
+      <p>Structures that conventional imaging cannot separate. There is more than one way past it; this workshop teaches two of them in full.</p>
 
       <div class="vsweb">
-        <figure class="vsw">
-          <figcaption class="vsw-lab b">Where STED wins &mdash; resolving power</figcaption>
-          <div class="vsw-trio">
+
+        <figure class="vsw shw-b">
+          <figcaption class="vsw-lab b">One source, or two? <i>point sources 120&nbsp;nm apart</i></figcaption>
+          <div class="shw-pair">
             <div>
-              <img src="img/ws-spot-confocal.webp" width="520" height="735" loading="lazy" decoding="async"
-                   alt="Two point sources at confocal resolution: a single merged blur, and a profile with one broad peak">
-              <span>Confocal<i>~230 nm</i></span>
+              <img src="img/ws-show-sted-conv.webp" width="900" height="736" loading="lazy" decoding="async"
+                   alt="Two point sources imaged conventionally: a single merged blur, and a profile with one broad peak">
+              <span>Diffraction-limited</span>
             </div>
             <div class="hi">
-              <img src="img/ws-spot-sim.webp" width="520" height="735" loading="lazy" decoding="async"
-                   alt="The same two sources at Lattice SIM resolution: the blur splits and the profile shows a dip between two peaks">
-              <span>Lattice SIM<i>~115 nm</i></span>
-            </div>
-            <div class="hi">
-              <img src="img/ws-spot-sted.webp" width="520" height="735" loading="lazy" decoding="async"
-                   alt="The same two sources at STED resolution: two clean spots and two fully separated peaks">
-              <span>STED<i>~50 nm</i></span>
+              <img src="img/ws-show-sted-sted.webp" width="900" height="736" loading="lazy" decoding="async"
+                   alt="The same two sources imaged with superresolution: two clean spots, and a profile with two fully separated peaks">
+              <span>Superresolution</span>
             </div>
           </div>
-          <p class="vsw-cap">Two point sources 120&nbsp;nm apart, with the intensity profile measured along the dashed line. That dip between the peaks is the resolution criterion itself. Scale bar 200&nbsp;nm. <span class="wf-sim">Simulation.</span></p>
+          <p class="vsw-cap">Below the diffraction limit, two sources are recorded as one. The profile runs along the dashed line, and the dip between the peaks is <strong>the resolution criterion</strong> &mdash; earning it on the instrument, rather than sharpening an image until it appears, is most of what the workshop teaches. Scale bar 100&nbsp;nm. <span class="wf-sim">Simulation.</span></p>
         </figure>
 
-        <figure class="vsw">
-          <figcaption class="vsw-lab a">Where SIM wins &mdash; photon budget</figcaption>
-          <div class="vsw-bleach">
-            <div class="blr"><span class="a">Lattice SIM</span>
-              <img src="img/ws-bleach-sim.webp" width="1000" height="197" loading="lazy" decoding="async"
-                   alt="A Lattice SIM time-lapse: the filaments dim gradually and are still clearly imaged at frame 40"></div>
-            <div class="blr"><span class="b">STED</span>
-              <img src="img/ws-bleach-sted.webp" width="1000" height="197" loading="lazy" decoding="async"
-                   alt="The same structure under STED: sharper at frame 1, faint by frame 20 and gone by frame 40"></div>
-            <div class="blx"><i>Frame 1</i><i>5</i><i>10</i><i>20</i><i>40</i></div>
+        <figure class="vsw shw-a">
+          <figcaption class="vsw-lab a">One filament, or two? <i>filaments 150&nbsp;nm apart</i></figcaption>
+          <div class="shw-pair">
+            <div>
+              <img src="img/ws-show-bundle-conv.webp" width="1100" height="897" loading="lazy" decoding="async"
+                   alt="Filaments imaged conventionally: each pair merges into one thick strand">
+              <span>Diffraction-limited</span>
+            </div>
+            <div class="hi">
+              <img src="img/ws-show-bundle-sr.webp" width="1100" height="897" loading="lazy" decoding="async"
+                   alt="The same filaments imaged with superresolution: each thick strand resolves into two parallel filaments">
+              <span>Superresolution</span>
+            </div>
           </div>
-          <img class="vsw-curve" src="img/ws-bleach-curve.webp" width="1400" height="300" loading="lazy" decoding="async"
-               alt="Signal remaining against frame number: the Lattice SIM curve decays slowly, the STED curve falls steeply">
-          <div class="vsw-key"><span class="a">Lattice SIM</span><span class="b">STED</span><em>signal remaining &middot; dashed line = 50%</em></div>
-          <p class="vsw-cap">The same structure over a time-lapse, at identical display scaling on every frame &mdash; so the dimming and the rising noise are real, not a contrast trick. <span class="wf-sim">Simulation.</span></p>
+          <p class="vsw-cap">Identical sample and label. What is recorded as a single filament is <strong>two, 150&nbsp;nm apart</strong> &mdash; and what is resolved is what may then be counted, traced and compared. Scale bar 1&nbsp;&micro;m. <span class="wf-sim">Simulation.</span></p>
         </figure>
+
       </div>
 
-      <p class="vsw-verdict"><strong>SIM buys a factor of two almost for free; STED buys four or five and pays for it in photons.</strong> STED is visibly the sharper at frame&nbsp;1 &mdash; but by frame&nbsp;20 there is little left to image. A live, multicolour, whole-cell experiment usually wants SIM; a fixed sample where two structures sit 60&nbsp;nm apart wants STED. Neither is the better instrument.</p>
+      <p class="vsw-verdict">Two approaches &mdash; <b class="inst a">Lattice SIM</b> at IISER Pune, <b class="inst b">STED</b> at BRIC-NCCS. Taught in batches of six by the scientists who operate them. <strong>Every participant works on both.</strong></p>
 
-      <!-- The other half of the trade-off. Same structure, same display scaling
-           across every frame, so the dimming and the rising noise are real and
-           not a contrast trick. Simulated; simulate-bleaching.py regenerates it. -->
       <!-- ===== Apply banner ===== -->
       <div class="ws-apply">
         <div class="wa-text">
