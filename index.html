@@ -1758,6 +1758,58 @@
   }
   /* printing should give the whole document, not one tab */
   @media print{ .v-off{display:block !important} }
+
+  /* ===== Supporters: The Company of Biologists, Journal of Cell Science =====
+     Both marks are dark artwork made for a white ground, so each sits on its
+     own white card - in the footer above all, where the page is near-black and
+     a bare logo would simply disappear. */
+  .supporters{
+    margin:18px 0 26px;padding:20px 22px;
+    background:var(--soft);border:1px solid var(--line);
+    border-left:4px solid var(--nucleus);border-radius:0 12px 12px 0;
+  }
+  .sp-lab{
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:14px;
+  }
+  .sp-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .sp-card{
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:14px 20px;display:flex;align-items:center;justify-content:center;
+    transition:.2s;
+  }
+  .sp-card:hover{border-color:var(--cell);text-decoration:none}
+  .sp-row img{display:block;height:54px;width:auto}
+  .sp-row img.sp-wide{height:36px}
+  .sp-note{font-size:.92rem;color:#3a4a52;margin-top:16px;line-height:1.6}
+  .sp-note strong{color:var(--ink)}
+  @media(max-width:560px){
+    .supporters{padding:16px}
+    .sp-row{gap:12px}
+    .sp-card{padding:11px 14px}
+    .sp-row img{height:42px}
+    .sp-row img.sp-wide{height:28px}
+  }
+
+  /* the same two marks, smaller, on every view */
+  .foot-sup{
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    padding-bottom:22px;margin-bottom:20px;
+    border-bottom:1px solid rgba(255,255,255,.18);
+  }
+  .foot-sup .fs-lab{
+    font-family:'Spline Sans Mono',monospace;font-size:.68rem;
+    letter-spacing:.16em;text-transform:uppercase;opacity:.62;
+  }
+  .foot-sup a{background:#fff;border-radius:6px;padding:9px 13px;display:flex;align-items:center}
+  .foot-sup a:hover{text-decoration:none}
+  .foot-sup img{display:block;height:32px;width:auto}
+  .foot-sup img.sp-wide{height:22px}
+  @media(max-width:560px){
+    .foot-sup img{height:23px}
+    .foot-sup img.sp-wide{height:17px}
+  }
+
 </style>
 </head>
 <body>
@@ -2480,9 +2532,10 @@
     <section id="awards" class="block">
       <h2 class="htag orange">Awards &amp; Endowment Prizes</h2>
       <p>Students and post-doctoral researchers presenting posters or platform talks are eligible for the Society&rsquo;s endowment awards &mdash; a certificate and a cash prize each. A limited number of travel grants may be available to student members.</p>
+      <p><strong>Journal of Cell Science</strong>, published by The Company of Biologists, sponsors a prize for the best short talk and a prize for the best poster presentation at the meeting.</p>
       <p style="font-size:.94rem;color:#4d5b63">Eligibility rules, prize values and the travel-grant application route will be published here. Enquiries: <a href="mailto:aicbc2026@acads.iiserpune.ac.in">aicbc2026@acads.iiserpune.ac.in</a>.</p>
       <div class="pills" style="margin-top:14px">
-        <span>Dr C.M.S. Dass Prize</span><span>Dr S.R.V. Rao Prize</span><span>Dr V.C. Shah Prize</span><span>Dr A.S. Mukherjee Memorial Prize</span><span>Dr A.N. Bhisey Prize</span><span>Best Poster Awards</span><span>Travel Grants</span>
+        <span>Dr C.M.S. Dass Prize</span><span>Dr S.R.V. Rao Prize</span><span>Dr V.C. Shah Prize</span><span>Dr A.S. Mukherjee Memorial Prize</span><span>Dr A.N. Bhisey Prize</span><span>Best Poster Awards</span><span>JCS Short Talk Prize</span><span>JCS Poster Prize</span><span>Travel Grants</span>
       </div>
     </section>
 
@@ -2780,6 +2833,24 @@
     <div class="rule"></div>
     <section id="sponsors" class="block">
       <h2 class="htag orange">Sponsors &amp; Exhibitors</h2>
+
+      <div class="supporters">
+        <div class="sp-lab">Supported by</div>
+        <div class="sp-row">
+          <a class="sp-card" href="https://www.biologists.com/" target="_blank" rel="noopener">
+            <img src="img/logo-cob.webp" width="640" height="361" loading="lazy" decoding="async"
+                 alt="The Company of Biologists">
+          </a>
+          <a class="sp-card" href="https://journals.biologists.com/jcs" target="_blank" rel="noopener">
+            <img class="sp-wide" src="img/logo-jcs.webp" width="900" height="235" loading="lazy" decoding="async"
+                 alt="Journal of Cell Science">
+          </a>
+        </div>
+        <p class="sp-note">The 49th AICBC is supported by a grant from <strong>The Company of Biologists</strong>.
+          <strong>Journal of Cell Science</strong> sponsors a prize for the best short talk and a prize for the
+          best poster presentation &mdash; see <a href="#awards">Awards &amp; Endowment Prizes</a>.</p>
+      </div>
+
       <p>Manufacturers of instruments and reagents will exhibit throughout the meeting. Sponsorship and exhibition enquiries are welcome at <a href="mailto:aicbc2026@acads.iiserpune.ac.in">aicbc2026@acads.iiserpune.ac.in</a>.</p>
       <div class="pills" style="margin-top:14px">
         <span>Platinum &mdash; available</span><span>Gold &mdash; available</span><span>Exhibition Booths &mdash; available</span>
@@ -2791,6 +2862,17 @@
   </main>
 
   <footer>
+    <div class="foot-sup">
+      <span class="fs-lab">Supported by</span>
+      <a href="https://www.biologists.com/" target="_blank" rel="noopener">
+        <img src="img/logo-cob.webp" width="640" height="361" loading="lazy" decoding="async"
+             alt="The Company of Biologists">
+      </a>
+      <a href="https://journals.biologists.com/jcs" target="_blank" rel="noopener">
+        <img class="sp-wide" src="img/logo-jcs.webp" width="900" height="235" loading="lazy" decoding="async"
+             alt="Journal of Cell Science">
+      </a>
+    </div>
     <div class="fg">
       <span>&copy; 2026 Indian Society of Cell Biology &middot; 49th AICBC, co-hosted by IISER Pune &amp; BRIC-NCCS Pune</span>
       <span class="mono">Architecture of Life &mdash; space &times; time</span>
