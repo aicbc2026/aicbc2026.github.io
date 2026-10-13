@@ -1764,13 +1764,14 @@
      own white card - in the footer above all, where the page is near-black and
      a bare logo would simply disappear. */
   .supporters{
-    margin:18px 0 26px;padding:20px 22px;
-    background:var(--soft);border:1px solid var(--line);
-    border-left:4px solid var(--nucleus);border-radius:0 12px 12px 0;
+    margin:18px 0 32px;padding:20px 22px;
+    background:var(--cell-soft);border:1px solid #bcded6;
+    border-left:4px solid var(--cell);border-radius:0 12px 12px 0;
   }
   .sp-lab{
-    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--muted);margin-bottom:14px;
+    font-family:'Spline Sans Mono',monospace;
+    font-size:.7rem;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--cell-text);margin-bottom:14px;
   }
   .sp-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
   .sp-card{
@@ -1783,6 +1784,10 @@
   .sp-row img.sp-wide{height:36px}
   .sp-note{font-size:.92rem;color:#3a4a52;margin-top:16px;line-height:1.6}
   .sp-note strong{color:var(--ink)}
+  /* The prize sponsor is a sponsor, so it takes the paper tone and the orange
+     rule that sponsorship uses here, not the teal reserved for the grant. */
+  .supporters.sp-sponsor{background:var(--soft);border-color:var(--line);border-left-color:var(--nucleus)}
+  .supporters.sp-sponsor .sp-lab{color:var(--nucleus-text)}
   @media(max-width:560px){
     .supporters{padding:16px}
     .sp-row{gap:12px}
@@ -1809,6 +1814,51 @@
     .foot-sup img{height:23px}
     .foot-sup img.sp-wide{height:17px}
   }
+
+
+  /* ===== The two credits, high on the page ================================
+     They are different things and must not read as one list: the Company of
+     Biologists AWARDED a grant, Journal of Cell Science SPONSORS the prizes.
+     Two labelled items, divided, rather than two logos in a row. */
+  .grantbar{
+    background:var(--cell-soft);
+    border-bottom:1px solid #bcded6;
+    padding:16px 34px;
+    display:flex;align-items:stretch;justify-content:center;
+    gap:0 36px;flex-wrap:wrap;
+  }
+  .gb-item{display:flex;align-items:center;gap:15px;max-width:46ch}
+  .gb-item + .gb-item{border-left:1px solid #bcded6;padding-left:36px}
+  .gb-item > a{
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:10px 14px;display:flex;align-items:center;flex:none;transition:.2s;
+  }
+  .gb-item > a:hover{border-color:var(--cell);text-decoration:none}
+  .gb-item img{display:block;height:40px;width:auto}
+  .gb-item img.sp-wide{height:27px}
+  .gb-lab{
+    font-family:'Spline Sans Mono',monospace;font-size:.66rem;letter-spacing:.17em;
+    text-transform:uppercase;color:var(--cell-text);margin-bottom:4px;
+  }
+  .gb-text{min-width:0}
+  .gb-text p{font-size:.91rem;line-height:1.55;color:#33424a;margin:0}
+  .gb-text p strong{color:var(--ink)}
+  @media(max-width:980px){
+    .grantbar{display:block;padding:15px 20px}
+    .gb-item{max-width:none}
+    .gb-item + .gb-item{
+      border-left:0;padding-left:0;
+      border-top:1px solid #bcded6;padding-top:13px;margin-top:13px;
+    }
+  }
+  @media(max-width:560px){
+    .gb-item{gap:12px}
+    .gb-item > a{padding:8px 11px}
+    .gb-item img{height:32px}
+    .gb-item img.sp-wide{height:22px}
+    .gb-text p{font-size:.87rem}
+  }
+
 
 </style>
 </head>
@@ -1875,6 +1925,39 @@
       <span class="nt-tag">Deadline extended</span>
       <p>The deadline for submission of <strong>Student/Post-Doc abstracts for platform presentations</strong> has been extended to <strong>September 30, 2026</strong>. Please, however, note that the <strong>early-bird fee deadline remains as is: September 20, 2026</strong>.</p>
     </div>
+  </div>
+
+  <!-- ===== GRANT AND PRIZE SPONSOR =====
+       Under the deadline notice, so the actionable date keeps the higher
+       position, but above the nav so neither credit needs scrolling to find.
+       The grant and the sponsorship are separate credits and are labelled as
+       such; running them together would misdescribe both. -->
+  <div class="grantbar">
+
+    <div class="gb-item">
+      <a href="https://www.biologists.com/" target="_blank" rel="noopener">
+        <img src="img/logo-cob.webp" width="640" height="361" decoding="async"
+             alt="The Company of Biologists">
+      </a>
+      <div class="gb-text">
+        <div class="gb-lab">Awarded a meeting grant</div>
+        <p><strong>The Company of Biologists</strong> &mdash; the not-for-profit
+          publisher of <em>Journal of Cell Science</em>.</p>
+      </div>
+    </div>
+
+    <div class="gb-item">
+      <a href="https://journals.biologists.com/jcs" target="_blank" rel="noopener">
+        <img class="sp-wide" src="img/logo-jcs.webp" width="900" height="235" decoding="async"
+             alt="Journal of Cell Science">
+      </a>
+      <div class="gb-text">
+        <div class="gb-lab">Prize sponsor</div>
+        <p><strong>Journal of Cell Science</strong> &mdash; prizes for the best short talk
+          and the best poster. <a href="#awards">See Awards</a>.</p>
+      </div>
+    </div>
+
   </div>
 
   <!-- ===== CONTACT STRIP ===== -->
@@ -2832,25 +2915,37 @@
 
     <div class="rule"></div>
     <section id="sponsors" class="block">
-      <h2 class="htag orange">Sponsors &amp; Exhibitors</h2>
+      <h2 class="htag orange">Grant Support &amp; Sponsors</h2>
 
       <div class="supporters">
-        <div class="sp-lab">Supported by</div>
+        <div class="sp-lab">Awarded a meeting grant</div>
         <div class="sp-row">
           <a class="sp-card" href="https://www.biologists.com/" target="_blank" rel="noopener">
             <img src="img/logo-cob.webp" width="640" height="361" loading="lazy" decoding="async"
                  alt="The Company of Biologists">
           </a>
+        </div>
+        <p class="sp-note">The 49th AICBC has been <strong>awarded a meeting grant by The Company of
+          Biologists</strong> &mdash; the not-for-profit publisher of <em>Journal of Cell Science</em>,
+          <em>Development</em>, <em>Journal of Experimental Biology</em>, <em>Disease Models &amp;
+          Mechanisms</em> and <em>Biology Open</em>, which returns its publishing income to the biological
+          community through grants of this kind.</p>
+      </div>
+
+      <div class="supporters sp-sponsor">
+        <div class="sp-lab">Prize sponsor</div>
+        <div class="sp-row">
           <a class="sp-card" href="https://journals.biologists.com/jcs" target="_blank" rel="noopener">
             <img class="sp-wide" src="img/logo-jcs.webp" width="900" height="235" loading="lazy" decoding="async"
                  alt="Journal of Cell Science">
           </a>
         </div>
-        <p class="sp-note">The 49th AICBC is supported by a grant from <strong>The Company of Biologists</strong>.
-          <strong>Journal of Cell Science</strong> sponsors a prize for the best short talk and a prize for the
-          best poster presentation &mdash; see <a href="#awards">Awards &amp; Endowment Prizes</a>.</p>
+        <p class="sp-note"><strong>Journal of Cell Science</strong> sponsors a prize for the best short talk
+          and a prize for the best poster presentation &mdash; see
+          <a href="#awards">Awards &amp; Endowment Prizes</a>.</p>
       </div>
 
+      <h3 class="sub-htag orange">Commercial sponsorship &amp; exhibition</h3>
       <p>Manufacturers of instruments and reagents will exhibit throughout the meeting. Sponsorship and exhibition enquiries are welcome at <a href="mailto:aicbc2026@acads.iiserpune.ac.in">aicbc2026@acads.iiserpune.ac.in</a>.</p>
       <div class="pills" style="margin-top:14px">
         <span>Platinum &mdash; available</span><span>Gold &mdash; available</span><span>Exhibition Booths &mdash; available</span>
@@ -2863,11 +2958,12 @@
 
   <footer>
     <div class="foot-sup">
-      <span class="fs-lab">Supported by</span>
+      <span class="fs-lab">Meeting grant</span>
       <a href="https://www.biologists.com/" target="_blank" rel="noopener">
         <img src="img/logo-cob.webp" width="640" height="361" loading="lazy" decoding="async"
              alt="The Company of Biologists">
       </a>
+      <span class="fs-lab">Prize sponsor</span>
       <a href="https://journals.biologists.com/jcs" target="_blank" rel="noopener">
         <img class="sp-wide" src="img/logo-jcs.webp" width="900" height="235" loading="lazy" decoding="async"
              alt="Journal of Cell Science">
